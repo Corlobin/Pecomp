@@ -18,6 +18,10 @@
     align-items: center;
     -webkit-justify-content: center;     
 }
+.formulario button {
+	background-color:lightblue;
+
+}
 
 .cadastro{
     position: absolute;

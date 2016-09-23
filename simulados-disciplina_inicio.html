@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+	<script src="js/script.js"> </script>
+	<script src="js/sh_main.min.js"> </script>
+	<script src="js/sh_c.js"> </script>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="css/sh_style.css" />
+    <title>Pecomp</title>
+</head>
+<body>
+    <div>
+
+            <header class="faixa-topo">
+				<img id="logo-geral" src="Imagens/logo.png" alt="logo" height="80" width="190">
+			</header>
+			
+			<!-- Foto do usuario -->
+			<img id="img-usuario" src="Imagens/brasil.png" alt="usuario">
+			<div id="nome-usuario">Antonio</div>
+			
+			<!-- Menu lateral -->
+			<nav>
+				<ul id="menu-vertical">
+					<li><a class="active" href="index.html">Início</a></li>
+					<li><a href="#news">Simulados</a>
+						<ul>
+							<li><a href="simulados-disciplina.html">Por disciplina</a></li>
+							<li><a href="simulados-ano.html">Por ano</a></li>
+							<li><a href="simulados-geral.html">Geral</a></li>
+						</ul>
+					</li>
+					<li><a href="#contact">Conteúdos</a>
+						<ul>
+							<li><a href="livros.html">Livros</a></li>
+							<li><a href="apostilas.html">Apostilas</a></li>
+							<li><a href="videos.html">Vídeos</a></li>
+						</ul>
+					</li>
+					<li><a href="desempenho.html">Desempenho</a></li>
+				</ul>
+			</nav>
+			
+			<!-- Corpo da pagina -->
+			<div class="titulo-form">
+				 Simulado da disciplina de Fundamentos de Computação
+			</div>
+			<section class="simulado">
+				<div class = "quantidade">
+				(1/90)
+				</div>
+				<div class = "titulo">
+					Considere o pseudocódigo a seguir e responda à questão.
+				</div>
+				
+				<pre class="sh_c">
+					HUFFMAN(C)
+					(1) n = |C|
+					(2) Q = C
+					(3) for i=1 to n-1
+					(4) alocar um novo nó z
+					(5) z.esquerda = x = EXTRAIR_MIN(Q)
+					(6) z.direita = y = EXTRAIR_MIN(Q)
+					(7) z.freq = x.freq + y.freq
+					(8) INSERIR(Q, z)
+					(9) return EXTRAIR_MIN(Q) //retorna a raiz da árvore
+				</pre>
+				
+				<div class = "titulo">
+					1. Sobre o pseudocódigo, é correto afirmar que é um algoritmo:
+				</div>
+				<br>
+				
+				<form>
+					<div class="alternativas">
+						<input type="radio" name="alternativa" value="a" checked> Aproximado. <br><br>
+						<input type="radio" name="alternativa" value="b"> Divisão-e-conquista. <br><br>
+						<input type="radio" name="alternativa" value="c"> Guloso.<br><br>
+						<input type="radio" name="alternativa" value="d"> Recursivo. <br><br>
+						<input type="radio" name="alternativa" value="e"> Tentativa e erro.<br>
+					</div>
+				</form>
+				
+				<!-- <li>
+					<ul> (a) aproximado. </ul>
+					<ul> (b) divisão-e-conquista. </ul>
+					<ul> (c) guloso. </ul>
+					<ul> (d) recursivo. </ul>
+					<ul> (e) tentativa e erro. </ul>
+				</li> -->
+
+				<input type = "button" value = "Mostrar comentarios" name = "btnMostrarComentario" id = "botaoComentario" onclick="show('comentarios'); hide('botaoComentario')"> 
+				<input type = "button" value = "Enviar" name = "btnMostrarComentario" id = "botaoEnviarResposta"> 
+				</br> </br>
+				<div id = "comentarios">
+					
+					<div class = "comentario">
+						<div class = "usuario">
+							Ricardo comentou:
+						</div>
+						<div class = "texto">
+							Estou com muita dificuldade nessa questão a resposta não seria 3?
+						</div>
+						<div class="rating">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+						</div>
+					</div>
+					<div class = "comentario">
+						<div class = "usuario">
+							Hanna comentou:
+						</div>
+						<div class = "texto">
+							Ricardo, a resposta é 2. Se somarmos dois numeros, 1+1, obteremos 2. É só usar a função do coseno!
+						</div>
+						<div class="rating">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- botoes das redes socias -->
+				<div class="bt-redessociais">
+				<!-- Facebook -->
+				<a href="http://www.facebook.com" title="Join me on Facebook" target="_blank"><img alt="Join me on Facebook" src="http://i49.tinypic.com/1zzqe4k.png" /></a>
+				<!-- Twitter -->
+				<a href="https://twitter.com" title="" target="_blank"><img alt="Follow me on Twitter" src="http://i45.tinypic.com/2n8szfr.png" /></a>
+				<!-- RSS -->
+				<a href="http://nempareceblog.blogspot.com/feeds/posts/default" title="Subscribe to RSS" target="_blank"><img alt="Subscribe to RSS" src="http://i47.tinypic.com/nf1w91.png" /></a>
+				<!-- google -->
+				<a href="https://plus.google.com" title="Email me" target="_blank"><img alt="Email me" src="http://i50.tinypic.com/spcj6h.jpg" /></a>
+				</div>
+				<!-- End -->
+
+			</section>
+		
+    </div>
+	
+	
+</body>
+</html>
+
+

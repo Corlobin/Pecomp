@@ -1,0 +1,340 @@
+﻿
+
+#imgaluno{
+    position: absolute;
+    top: 21%;
+    left: 43.5%;
+    z-index: 2;
+}
+
+#logo-principal{
+    position: fixed;
+    top: 10%;
+    left: 36%;
+    z-index: 2;
+}
+
+.formulario{
+    position: absolute;
+    width: 360px;
+    height: 350px;
+    top: 30%;
+    left: 35%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px #CCCCCC; /*cinza*/
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-justify-content: center;     
+}
+
+.cadastro{
+    position: absolute;
+    width: 500px;
+    height: 450px;
+    top: 30%;
+    left: 32%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px #CCCCCC; /*cinza*/
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-justify-content: center;     
+}
+
+.faixaInicial{
+    position:relative;
+    width:100%;
+    height:350px;
+    top: 0px; 
+    background-color: #000080; /*azul escuro*/ 
+    border-radius:4px;
+    box-shadow:2px 2px 2px #CCCCCC; /*cinza*/
+    float:none;
+}
+
+
+a:hover {
+text-decoration: underline;
+color: purple;
+}
+
+label {
+
+    display: inline-block;
+    width: 90px;
+	white-space:nowrap
+}
+
+.bt-simples{
+	font-size: 14px;
+	text-transform: uppercase;
+	padding: 4px 20px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.faixa-topo{
+    position:relative;
+    width:100%;
+    height:110px;
+    top: 0px; 
+    background-color: #000080; /*azul escuro*/ 
+    border-radius:4px;
+    box-shadow:2px 2px 2px #CCCCCC; /*cinza*/
+    float:none;
+}
+
+#logo-geral{
+    position: absolute;
+    top: 10%;
+    z-index: 2;
+}
+
+#img-usuario{
+	position: absolute;
+	top: 8%;
+    height: 130px;
+	width: 130px;
+	left: 88%;
+}
+
+.corpo{
+    position: relative;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px #CCCCCC; /*cinza*/
+    display: -webkit-flex;     
+}
+
+
+/* Menu */
+#menu-vertical, #submenu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 18%;
+    background-color: #F5F5F5;
+    position: absolute;
+    height: 100%;
+    overflow: auto;
+}
+
+
+#menu-vertical li a, #submenu li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+	font-size: 18px;
+}
+
+#menu-vertical li ul {
+	display: none;
+}
+#menu-vertical li:hover > ul{
+	display: block;
+
+}
+#menu-vertical li a.active{
+    background-color: #B4CDCD;
+    color: white;
+	text-decoration:none;
+}
+
+#menu-vertical li a:hover:not(.active), #submenu li a:hover:not(.active){
+    background-color: #f1f1f1;
+    color: #696969;
+	text-decoration:none;
+}
+
+/*Submenu*/
+/* Nao consegui fazer o submenu funcionar :(
+li ul {
+    position: absolute;
+    left: 245px;
+    top: 0;
+    display: none;
+}
+
+li:hover ul { display: block; }
+	*/
+/* Fim do menu */
+
+
+.pag-livros{
+	position: relative;
+	width: 73%;
+	height: 100%;
+	top: 100px;
+	left: 290px;
+	border-radius:4px;
+	box-shadow: 2px 2px 8px #CCCCCC; /*cinza*/
+}
+
+.noticia{
+	position: relative;
+	width: 40%;
+	height: 100%;
+	margin-top: 2%;
+	left: 290px;
+}
+
+.pesquisa{
+	text-align:right;
+	padding:5% 10% 0 0%;
+}
+
+.noticia .titulo {
+	font-size: 20px;
+	color: #191970;
+}
+.noticia .article {
+	
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width:100%;
+	height:100%;
+}
+.noticia .article a {
+	text-decoration:none;
+}
+.noticia .article .mais {
+	text-align: right;
+	padding-left:80%;
+}
+
+
+.titulo-form{
+	position: absolute;
+	top: 165px;
+	left: 305px;
+	font-size: 30px;
+	color: #191970;
+}
+
+.tabela-livros {
+    width: 100%;
+	border: 1px;
+	
+}
+
+.tabela-livros  tr {
+    height: 300px;
+	
+    text-align: center;
+}
+
+img#img-livros {
+	width: 150px;
+	height: 200px;
+}
+
+img#img-videos {
+	width: 140px;
+	height: 150px;
+}
+
+.select-pesquisa-video{
+	display: inline-block;
+	margin-left: em;
+}
+
+/* Simulado */
+.simulado{
+	position: relative;
+	width: 73%;
+	height: 100%;
+	top: 100px;
+	left: 290px;
+	border-radius:4px;
+	box-shadow: 2px 2px 8px #CCCCCC; /*cinza*/
+}
+.simulado #botaoComentario, #botaoEnviarResposta {
+	float:right;
+	margin-right: 2%;
+}
+.simulado .titulo {
+	padding-left:1%;
+	font-size: 20px;
+}
+.simulado .quantidade {
+	text-align: right;
+}
+.simulado li,ul
+{
+    list-style-type: none;
+	text-decoration: none;
+	font-size:12px;
+}
+.simulado #comentarios 
+{
+	display: none;
+}
+.simulado .comentario
+{
+	padding-left: 2%;
+}
+.simulado .comentario .usuario 
+{
+	color: blue;
+	padding-top:1%;
+}
+
+.simulado .rating {
+	direction: rtl;
+}
+.simulado .rating > span:hover:before,
+.simulado .rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
+/* Desempenho */
+.highchart { display:none; }
+.container
+{
+	width:25%;
+	height: 30%;
+	position:absolute;
+	padding:2%;
+	background-color:#eee;
+	-webkit-box-shadow: 0px 1px 15px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 1px 15px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 1px 15px rgba(50, 50, 50, 0.75);
+	margin-left: 20%;
+	margin-top: 10%;
+}
+#parent
+{
+	margin-left:7%;
+	margin-bottom:10%;
+}
+
+.alternativas{
+	padding-left: 5%;
+}
+
+/*Botoes das redes sociais*/
+.bt-redessociais{
+	position:fixed;
+	right:10px;
+	top:65%;
+}
+.bt-redessociais img{
+	float:right;
+	clear:right;
+	margin:1px;
+	-webkit-transition: all .0s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+.bt-redessociais img:hover{
+	-moz-transform: scale(1.2) rotate(6deg);
+	-webkit-transform: scale(1.2) rotate(6deg);
+	-o-transform: scale(1.2) rotate(6deg);
+	-ms-transform: scale(1.2) rotate(6deg);
+	transform: scale(1.2) rotate(6deg);
+}

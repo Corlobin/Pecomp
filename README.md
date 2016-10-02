@@ -17,13 +17,11 @@ Nome | Instituição | Email
 Antonio Ricardo Alexandre Brasil | Ifes Campus Serra | anribrasil@gmail.com    
 Hanna Tátila de Sousa | Ifes Campus Serra | hanna.tati@gmail.com
 
-## Pitch
 
 
-
-
-
-
+## Ferramentas de integraçao da equipe
 - Slack
-- Travis
 - Taiga
+
+## Validador
+- Travis

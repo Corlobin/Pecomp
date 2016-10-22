@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang = "pt-br">
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Pecomp</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		<script src="js/script.js"> </script>
+		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+	</head>
+	<body onload="cadastrar_storage()">
+		<form class ="form-perfil" name = "frm">
+			<div class="faixaInicial"><img id="logo-principal" src="imagens/logo.png" alt="logo" height="120" width="290"></div>
+				<div class="formulario-login">
+					<div class="perfil-geral">
+												
+						<h2 class = "center"> Cadastro </h2>
+						<hr>
+						<div class="perfil-dados">
+							<div class="perfil-campo">
+								<label class="perfil-labels"> Nome completo: </label>	 
+								<input type="text" name = "nome">
+							</div>
+								
+							<div class="perfil-campo">
+								<label class="perfil-labels"> Email: </label>	 
+								<input type="text" name = "email"></div>
+							<div>
+								
+							<div class="perfil-campo">
+								<label class="perfil-labels"> Instituição: </label>	
+								<select>
+									<option value="">Selecione</option>
+									<option value="ifes" selected>IFES</option>
+									<option value="ufes">UFES</option>
+									<option value="uvv">UVV</option>
+									<option value="ucl">UCL</option>
+								</select>  
+							</div>
+							<div class="perfil-campo">
+								<label class="perfil-labels"> Senha: </label>	 
+								<input type="password" name = "senha" id ="senha">
+							</div>
+							<div class="perfil-campo">
+								<label class="perfil-labels"> Repita a senha: </label>	 
+								<input type="password" name = "repitasenha" id="repitasenha">
+							</div>															
+						</div>
+						<br/>
+						<button class="btn btn-azul" formaction = "login.html" onclick="cadastrar_storage()"> Cadastrar </button>
+						<button class="btn btn-azul" formaction = "login.html" onclick="cadastrar_storage()"> Cancelar </button>						
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

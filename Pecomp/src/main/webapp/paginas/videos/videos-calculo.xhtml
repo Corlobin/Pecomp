@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang = "pt-br">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		
+		<script src="js/script.js"> </script>
+		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<title>Pecomp</title>
+	</head>
+	<body>
+		<div>
+			<header class="faixa-topo">
+				<img id="logo-geral" src="Imagens/logo.png" alt="logo" height="80" width="190">
+			</header>
+			
+			<!-- Foto do usuario -->
+			<img id="img-usuario" src="Imagens/brasil.png" alt="logo" onclick="mostrarperfil()">
+			<div id="box-toggle">
+				<div class="box-usuario">
+				   <p class="menu-usuario nome-usuario">Ricardo Brasil</p> 
+				   <hr id="linha-menu-usuario">
+				   <p class="menu-usuario"><a href="perfil.html">Meu perfil</a></p>
+				   <p class="menu-usuario"><a href="login.html">Sair</a></p>
+				</div>
+			</div>
+			
+			<!-- Menu lateral -->
+			<nav>
+				<ul id="menu-vertical">
+					<li><a  href="index.html">Início</a></li>
+					<li><a href="#news">Simulados</a>
+						<ul>
+							<li><a href="simulados-disciplina.html">Por disciplina</a></li>
+							<li><a href="simulados-ano.html">Por ano</a></li>
+							<li><a href="simulados-geral.html">Geral</a></li>						</ul>
+					</li>
+					<li><a class="active" href="#contact">Conteúdos</a>
+						<ul>
+							<li><a href="livros.html">Livros</a></li>
+							<li><a href="apostilas.html">Apostilas</a></li>
+							<li><a href="videos.html">Vídeos</a></li>
+						</ul>
+					</li>
+					<li><a href="desempenho.html">Desempenho</a></li>
+				</ul>>
+			</nav>
+			
+			<!-- Corpo da pagina -->
+			<div class="titulo-form">
+				 Cálculo 
+			</div>
+			<div class="pag-livros">
+				<div>
+					<table class="tabela-livros">
+						<tr>
+							<td> 
+								<video controls>
+								  <source src="videos/movie.mp4" type="video/mp4">
+								  <source src="videos/movie.ogg" type="video/ogg">
+								Your browser does not support the video tag.
+								</video>
+								<br/><br/>
+							</td>
+							<td> 
+								<video controls>
+								  <source src="videos/movie.mp4" type="video/mp4">
+								  <source src="videos/movie.ogg" type="video/ogg">
+								Your browser does not support the video tag.
+								</video>
+								<br/><br/>
+							</td>
+							<td> 
+								<video controls>
+								  <source src="videos/movie.mp4" type="video/mp4">
+								  <source src="videos/movie.ogg" type="video/ogg">
+								Your browser does not support the video tag.
+								</video>
+								<br/><br/>
+							</td>
+						</tr>
+						
+					</table>
+				</div>
+				<ul class="pagination">
+				  <li><a href="#">«</a></li>
+				  <li><a href="#">1</a></li>
+				  <li><a class="active" href="#">2</a></li>
+				  <li><a href="#">3</a></li>
+				  <li><a href="#">4</a></li>
+				  <li><a href="#">5</a></li>
+				  <li><a href="#">6</a></li>
+				  <li><a href="#">7</a></li>
+				  <li><a href="#">»</a></li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<div class="tooltip"><img id="img-calendario" src="Imagens/calendar.png" alt = "Calendario das Provas">
+			<span class="tooltip-texto">Faltam 5 dias para o fim das inscrições!<br>Faltam 90 dias para a prova!</span>
+		</div>
+		
+	</body>
+</html>
+
+

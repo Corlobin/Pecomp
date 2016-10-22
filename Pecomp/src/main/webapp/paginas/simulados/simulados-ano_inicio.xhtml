@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang = "pt-br">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+		<script src="js/script.js"> </script>
+		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<title>Pecomp</title>
+	</head>
+	<body>
+		<div>
+			<header class="faixa-topo">
+				<img id="logo-geral" src="Imagens/logo.png" alt="logo" height="80" width="190">
+			</header>
+			
+			<!-- Foto do usuario -->
+			<img id="img-usuario" src="Imagens/brasil.png" alt="logo" onclick="mostrarperfil()">
+			<div id="box-toggle">
+				<div class="box-usuario">
+				   <p class="menu-usuario nome-usuario">Ricardo Brasil</p> 
+				   <hr id="linha-menu-usuario">
+				   <p class="menu-usuario"><a href="perfil.html">Meu perfil</a></p>
+				   <p class="menu-usuario"><a href="login.html">Sair</a></p>
+				</div>
+			</div>
+			
+			<!-- Menu lateral -->
+			<nav>
+				<ul id="menu-vertical">
+					<li><a href="index.html">Início</a></li>
+					<li><a class="active" href="#news">Simulados</a>
+						<ul>
+							<li><a href="simulados-disciplina.html">Por disciplina</a></li>
+							<li><a href="simulados-ano.html">Por ano</a></li>
+							<li><a href="simulados-geral.html">Geral</a></li>
+						</ul>
+					</li>
+					<li><a href="#contact">Conteúdos</a>
+						<ul>
+							<li><a href="livros.html">Livros</a></li>
+							<li><a href="apostilas.html">Apostilas</a></li>
+							<li><a href="videos.html">Vídeos</a></li>
+						</ul>
+					</li>
+					<li><a href="desempenho.html">Desempenho</a></li>
+				</ul>
+			</nav>
+			
+			<!-- Corpo da pagina -->
+			<div class="titulo-form">
+				 Simulado do ano de 2014
+			</div>
+			<div class="simulado">
+				<div class = "quantidade">
+				(20/90)
+				</div>
+				<div class = "titulo">
+				1. Sobre os metadados de um arquivo, assinale a alternativa correta.
+				</div>
+				<br/>
+				<form>
+					<div class="alternativas">
+						<input type="radio" name="alternativa" value="a" checked> A <i> flag </i> de arquivamento indica se um arquivo deve ser apagado pelo sistema. <br/><br/>
+						<input type="radio" name="alternativa" value="b"> Atributos de momento são utilizados para indicar arquivos temporários. <br/><br/>
+						<input type="radio" name="alternativa" value="c"> <i> Flags </i> são <i>bits</i> ou campos pequenos que controlam alguma característica específica.<br/><br/>
+						<input type="radio" name="alternativa" value="d"> O atributo "tamanho do registro" indica o número de bytes no campo chave. <br/><br/>
+						<input type="radio" name="alternativa" value="e"> Sistemas operacionais modernos implementam todos os atributos possíveis a um arquivo.<br/>
+					</div>
+					
+					<br/> <br/>
+					<input type = "button" class = "btn btn-azul" value = "Mostrar comentários" name = "btnMostrarComentario" id = "botaoComentario" onclick="show('comentarios'); hide('botaoComentario')"> 
+					<input type = "button" class = "btn btn-azul" value = "Enviar" name = "btnMostrarComentario" id = "botaoEnviarResposta"> 
+					<br/> <br/>
+				</form>
+				
+				
+				<!-- <li>
+					<ul> (a) A <i> flag </i> de arquivamento indica se um arquivo deve ser apagado pelo sistema. </ul>
+					<ul> (b) Atributos de momento são utilizados para indicar arquivos temporários. </ul>
+					<ul> (c) <i> Flags </i> são <i>bits</i> ou campos pequenos que controlam alguma característica específica. </ul>
+					<ul> (d) O atributo "tamanho do registro" indica o número de bytes no campo chave. </ul>
+					<ul> (e) Sistemas operacionais modernos implementam todos os atributos possíveis a um arquivo. </ul>
+				</li> -->
+
+				<div id = "comentarios">
+					
+					<div class = "comentario">
+						<div class = "usuario">
+							Ricardo comentou:
+						</div>
+						<div class = "texto">
+							Estou com muita dificuldade nessa questão a resposta não seria 3?
+						</div>
+						<div class="rating">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+						</div>
+					</div>
+					<div class = "comentario">
+						<div class = "usuario">
+							Hanna comentou:
+						</div>
+						<div class = "texto">
+							Ricardo, a resposta é 2. Se somarmos dois números, 1+1, obteremos 2. É só usar a função do coseno!
+						</div>
+						<div class="rating">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<div class="tooltip"><img id="img-calendario" src="Imagens/calendar.png" alt = "Calendario das Provas">
+			<span class="tooltip-texto">Faltam 5 dias para o fim das inscrições!<br>Faltam 90 dias para a prova!</span>
+		</div>
+		
+	</body>
+</html>
+
+

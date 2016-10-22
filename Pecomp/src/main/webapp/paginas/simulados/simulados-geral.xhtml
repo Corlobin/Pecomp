@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang = "pt-br">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+		
+		<script src="js/script.js"> </script>
+		<link rel="stylesheet" type="text/css" href="css/estilo.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<title>Pecomp</title>
+	</head>
+	<body>
+		<div>
+
+			<header class="faixa-topo">
+				<img id="logo-geral" src="Imagens/logo.png" alt="logo" height="80" width="190">
+			</header>
+			
+			<!-- Foto do usuario -->
+			<img id="img-usuario" src="Imagens/brasil.png" alt="logo" onclick="mostrarperfil()">
+			<div id="box-toggle">
+				<div class="box-usuario">
+				   <p class="menu-usuario nome-usuario">Ricardo Brasil</p> 
+				   <hr id="linha-menu-usuario">
+				   <p class="menu-usuario"><a href="perfil.html">Meu perfil</a></p>
+				   <p class="menu-usuario"><a href="login.html">Sair</a></p>
+				</div>
+			</div>
+			
+			<!-- Menu lateral -->
+			<nav>
+				<ul id="menu-vertical">
+					<li><a href="index.html">Início</a></li>
+					<li><a class="active" href="#news">Simulados</a>
+						<ul>
+							<li><a href="simulados-disciplina.html">Por disciplina</a></li>
+							<li><a href="simulados-ano.html">Por ano</a></li>
+							<li><a href="simulados-geral.html">Geral</a></li>
+						</ul>
+					</li>
+					<li><a href="#contact">Conteúdos</a>
+						<ul>
+							<li><a href="livros.html">Livros</a></li>
+							<li><a href="apostilas.html">Apostilas</a></li>
+							<li><a href="videos.html">Vídeos</a></li>
+						</ul>
+					</li>
+					<li><a href="desempenho.html">Desempenho</a></li>
+				</ul>
+			</nav>
+			
+			<!-- Corpo da pagina -->
+			<div class="titulo-form">
+				 Simulado Geral
+			</div>
+			<div class="simulado">
+				<div class = "quantidade">
+				(1/90)
+				</div>
+				<div class = "titulo">
+					Considere o algoritmo, apresentado na forma de uma pseudolinguagem (Português Estruturado), a seguir. As variáveis N e Y devem assumir valores positivos.	
+				</div>
+					<pre class="sh_c">
+						Algoritmo
+						declare N, X, Y, i númerico
+						leia N
+						leia Y
+						i &lt;= 1
+						X &lt;= Y/2
+							repita
+								x &lt;= (X^2 + Y) / (2 * X)
+								i &lt;= i + 1
+								se i  > N então
+									interrompa;
+								fim-se
+							fim-repita
+							escreva "X = ", X;
+						Fim Algoritmo.
+					</pre>
+				<div class = "titulo">
+					1. Assinale a alternativa que apresenta, corretamente, a relação existente entre os valores das variáveis X e Y.
+				</div>
+				<br/>
+				
+				<form>
+					<div class="alternativas">
+						<input type="radio" name="alternativa" value="a" checked> X = Y / N. <br/><br/>
+						<input type="radio" name="alternativa" value="b"> DX = Y x N. <br/><br/>
+						<input type="radio" name="alternativa" value="c"> X = raiz(Y).<br/><br/>
+						<input type="radio" name="alternativa" value="d"> X = e^Y. <br/><br/>
+						<input type="radio" name="alternativa" value="e"> X = Y / 2. <br/>
+					</div>
+				</form>
+
+				<!-- <li>
+					<ul> (a) X = Y / N </ul>
+					<ul> (b) X = Y x N</ul>
+					<ul> (c) X = raiz(Y) </ul>
+					<ul> (d) X = e^Y </ul>
+					<ul> (e) X = Y / 2 </ul>
+				</li> -->
+
+				<input type = "button" class = "btn btn-azul" value = "Mostrar comentários" name = "btnMostrarComentario" id = "botaoComentario" onclick="show('comentarios'); hide('botaoComentario')"> 
+				<input type = "button" class = "btn btn-azul" value = "Enviar" name = "btnMostrarComentario" id = "botaoEnviarResposta"> 
+				<br/> <br/>
+				<div id = "comentarios">
+					
+					<div class = "comentario">
+						<div class = "usuario">
+							Ricardo comentou:
+						</div>
+						<div class = "texto">
+							Estou com muita dificuldade nessa questão a resposta não seria 3?
+						</div>
+						<div class="rating">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+						</div>
+					</div>
+					<div class = "comentario">
+						<div class = "usuario">
+							Hanna comentou:
+						</div>
+						<div class = "texto">
+							Ricardo, a resposta é 2. Se somarmos dois numeros, 1+1, obteremos 2. É só usar a função do coseno!
+						</div>
+						<div class="rating">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+						</div>
+					</div>
+				</div>
+				<br/> <br/>
+			</div>			
+		</div>		
+		
+		<div class="tooltip"><img id="img-calendario" src="Imagens/calendar.png" alt = "Calendario das Provas">
+			<span class="tooltip-texto">Faltam 5 dias para o fim das inscrições!<br>Faltam 90 dias para a prova!</span>
+		</div>
+		
+	</body>
+</html>
+
+

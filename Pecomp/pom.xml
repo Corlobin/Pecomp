@@ -7,7 +7,17 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Pecomp</name>
 	<description>Plataforma de Ensino para a Pós Graduação</description>
+ <properties>
+	<maven.test.skip>true</maven.test.skip>	    
+        <!--- Configuracao do Sonar-->
 
+        <sonar.host.url>https://sonarqube.com</sonar.host.url>
+	<sonar.login>f759ee66d38b65235d4455c5c4db8911581e54a4</sonar.login>    
+
+        <!-- Codificacao -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>    
+    </properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/javax.faces/javax.faces-api -->
 		<dependency>

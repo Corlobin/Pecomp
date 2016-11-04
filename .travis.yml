@@ -1,16 +1,18 @@
 language: java
 
-addons:
- -postgresql: "9.3"
- -sonarqube: true
-
-services: postgresql
-
 jdk:
  - oraclejdk8 
  - oraclejdk7
- 
+
+addons:
+ -postgresql: "9.3"
+ -sonarqube: true
+ #jgjhhj
+
+services: postgresql
+
 script:
+  - cd Pecomp
   - mvn clean install sonar:sonar 
   
 notifications:

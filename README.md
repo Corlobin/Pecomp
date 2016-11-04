@@ -25,3 +25,8 @@ Hanna Tátila de Sousa | Ifes Campus Serra | hanna.tati@gmail.com
 
 ## Validador
 - Travis
+
+
+## Lembrar
+- https://sonarqube.com/component_issues?id=br.ifes.pecomp%3APecomp#resolved=false|types=CODE_SMELL
+- https://travis-ci.org/Corlobin/Pecomp/jobs/173211802

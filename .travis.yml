@@ -1,20 +1,17 @@
 language: java
 
-before_install
- - wget http://repo1.maven.org/maven2/org/codehaus/sonar/runner/sonar-runner-dist/2.4/sonar-runner-dist-2.4.zip
- - unzip sonar-runner-dist-2.4.zip
-
 addons:
  -postgresql: "9.3"
+ -sonarqube: true
 
 services: postgresql
 
 jdk:
  - oraclejdk8 
  - oraclejdk7
-
-after_script:
- - ./sonar-runner-2.4/bin/sonar-runner
-
+ 
+script:
+  - mvn clean install sonar:sonar 
+  
 notifications:
   slack: pecomp:ndjOMgO4ba39zJZBOW3nxICf

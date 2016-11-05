@@ -1,3 +1,6 @@
+[![Build Status](https://api.travis-ci.org/Corlobin/Pecomp.svg)](https://api.travis-ci.org/Corlobin/Pecomp)
+
+
 # Plataforma de ensino para pós graduação.
 
 ## Um pouco sobre o ingresso na pós graduação 

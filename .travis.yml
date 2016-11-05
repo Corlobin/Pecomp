@@ -7,7 +7,6 @@ jdk:
 addons:
  -postgresql: "9.3"
  -sonarqube: true
- #jgjhhj
 
 services: postgresql
 

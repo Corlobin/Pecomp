@@ -22,7 +22,7 @@ public class MenuBean extends AbstractBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private MenuModel model;
+	private transient MenuModel model;
  
     @PostConstruct
     public void init() {

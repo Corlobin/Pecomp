@@ -30,12 +30,12 @@ public class QuestaoRepositoryImpl extends AbstractRepository implements Seriali
 	
 	public List<Integer> getAllYears(){
 		ArrayList<Integer> lista = new ArrayList<Integer>();
-		lista.add(new Integer(2010));
-		lista.add(new Integer(2011));
-		lista.add(new Integer(2012));
-		lista.add(new Integer(2013));
-		lista.add(new Integer(2014));
-		lista.add(new Integer(2015));
+		lista.add(2010);
+		lista.add(2011);
+		lista.add(2012);
+		lista.add(2013);
+		lista.add(2014);
+		lista.add(2015);
 		return lista;
 	}
 

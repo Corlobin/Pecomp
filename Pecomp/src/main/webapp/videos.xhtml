@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">  
+ 
+    <h:body>  
+ 
+		<ui:composition template="templates/template_page.xhtml">          
+			<ui:define name = "titulo_menu"> 
+				Página Inicial
+			</ui:define>
+			
+			<ui:define name="content">
+		        <h:panelGrid columns="2" width="100%" >
+
+					<!-- Corpo da lista -->
+					<h:form id="form">
+						<p:dataGrid var="video" value="#{videoBean.videos}" columns="3"
+							layout="grid" rows="12" paginator="true" id="video"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="3,6,12">
+
+							<f:facet name="header">
+					            Videos aula online
+					        </f:facet>
+
+							<p:panel header="#{video.id}" style="text-align:center">
+								<h:panelGrid columns="1">
+				                    <h:outputText value = "#{video.titulo}"  />
+
+									<p:media value="#{video.URLVideo}"  player="flash"/>	
+
+									<p:commandLink update=":form:videoDetalhe" oncomplete="PF('videoDialog').show();" title="Assistir online">
+					                    <h:outputText value = "Visualizar video"  />
+					                    <f:setPropertyActionListener value="#{video}" target="#{videoBean.videoSelecionado}" />
+					                </p:commandLink>
+
+								</h:panelGrid>
+							</p:panel>
+
+						</p:dataGrid>
+						<p:dialog header="Informações do video" widgetVar="videoDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="true">
+					        <p:outputPanel id="videoDetalhe" style="text-align:center;">
+
+					            <p:panelGrid  columns="1" rendered="#{videoBean.videoSelecionado != null}" columnClasses="label,value">
+
+									<p:media value="#{videoBean.videoSelecionado.URLVideo}" player="flash"/>	
+							        
+							        <h:outputLink value = "{videoBean.videoSelecionado.URLVideo}"/>			 
+					            </p:panelGrid>
+
+
+					        </p:outputPanel>
+					    </p:dialog>
+					</h:form>
+					<!-- Corpo da lista -->
+				</h:panelGrid>
+ 			</ui:define>			
+   		</ui:composition>
+    </h:body>  
+</html>

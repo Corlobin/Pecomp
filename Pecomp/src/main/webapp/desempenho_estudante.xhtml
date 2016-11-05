@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">  
+ 
+    <h:body>  
+ 
+		<ui:composition template="templates/template_page.xhtml">          
+			<ui:define name = "titulo_menu"> 
+				Página Inicial
+			</ui:define>
+			
+			<ui:define name="content">
+				<p:panel id="panel" header="Analisar desempenho por disciplina">
+				        <p:messages id="messages" />
+				        
+				        
+				        <h:panelGrid columns="2" cellpadding="5">
+				            <h:outputLabel for="ano" value="Selecione uma disciplina para verificar seu desempenho:" />
+							<p:selectOneMenu id="ano" value="#{simuladoBean.materia}" style="width:150px">
+				                <f:selectItem itemLabel="Selecione uma disciplina" itemValue="" noSelectionOption="true" />
+				                <f:selectItems value="#{simuladoBean.materias}" />
+				            </p:selectOneMenu>
+				            <p:commandButton value="Analisar" update="panel"  />
+				        </h:panelGrid>
+			            <p:panel>
+				            <h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
+							    <p:chart type="line" model="#{desempenhoEstudanteBean.animatedModel1}" style="width:400px;" />
+							    <p:chart type="bar" model="#{desempenhoEstudanteBean.animatedModel2}" style="width:400px;" />
+							</h:panelGrid>
+				            
+			            </p:panel>
+			    </p:panel>
+				
+ 			</ui:define>
+			
+   		</ui:composition>
+    		
+        
+    </h:body>  
+</html>

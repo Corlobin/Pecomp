@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">  
+ 
+    <h:body>  
+ 
+		<ui:composition template="templates/template_page.xhtml">          
+			<ui:define name = "titulo_menu"> 
+				Página Inicial
+			</ui:define>
+			
+			<ui:define name="content">
+		        <h:panelGrid columns="2" width="100%" >
+
+					<!-- Corpo da lista -->
+					<h:form id="form">
+						<p:dataGrid var="livro" value="#{livroBean.livros}" columns="3"
+							layout="grid" rows="12" paginator="true" id="livro"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="3,6,12">
+
+							<f:facet name="header">
+					            Livros online
+					        </f:facet>
+
+							<p:panel header="#{livro.id}" style="text-align:center">
+								<h:panelGrid columns="1">
+
+									<h:graphicImage library="LivrosEnviados" name = "#{livro.imagem}" height="100%" width="100%"/>		
+	
+
+									<p:commandLink update=":form:livroDetalhe" oncomplete="PF('livroDialog').show();" title="Ler online">
+					                    <h:outputText value = "Visualizar livro"  />
+					                    <f:setPropertyActionListener value="#{livro}" target="#{livroBean.livroSelecionado}" />
+					                </p:commandLink>
+
+								</h:panelGrid>
+							</p:panel>
+
+						</p:dataGrid>
+						<p:dialog header="Informações do livro" widgetVar="livroDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="true">
+					        <p:outputPanel id="livroDetalhe" style="text-align:center;">
+
+					            <p:panelGrid  columns="1" rendered="#{livroBean.livroSelecionado != null}" columnClasses="label,value">
+
+									<object type="application/pdf" data="http://www.lbd.dcc.ufmg.br/colecoes/sbsi/2015/040.pdf" height="400px" width="500px" >
+							            O seu browser não suporta o PDF, <a href="{livroBean.livroSelecionado.URLLivro}">clique</a> para fazer o download.
+							        </object>
+							        
+							        <h:outputLink value = "{livroBean.livroSelecionado.URLLivro}"/>			 
+					            </p:panelGrid>
+
+
+					        </p:outputPanel>
+					    </p:dialog>
+					</h:form>
+					<!-- Corpo da lista -->
+				</h:panelGrid>
+ 			</ui:define>			
+   		</ui:composition>
+    </h:body>  
+</html>

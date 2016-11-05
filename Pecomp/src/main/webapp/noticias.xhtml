@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">  
+ 
+    <h:body>  
+ 
+		<ui:composition template="templates/template_page.xhtml">          
+			<ui:define name = "titulo_menu"> 
+				Noticias
+			</ui:define>
+			
+			<ui:define name="content">
+				<h1>Noticias da Sociedade Brasileira de Computação (SBC)</h1>
+		        <h:panelGrid columns="2" >
+					<p:feedReader value="http://www.sbc.org.br/?format=feed" var="feed">
+					    <h:outputLink value="#{feed.link}"> 
+					    	<h2> <h:outputText value="#{feed.title}" style="font-weight: bold;display:block"/></h2>
+					    </h:outputLink>
+					    
+					    <h:outputText value="#{feed.description.value}" escape="false" style="width:135px;"/>
+					    <p:separator />
+					</p:feedReader>
+				</h:panelGrid>
+ 			</ui:define>
+			
+   		</ui:composition>
+    		
+        
+    </h:body>  
+</html>

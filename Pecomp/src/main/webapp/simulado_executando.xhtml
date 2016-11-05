@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">  
+
+    <h:body>  
+ 
+		<ui:composition template="templates/template_page.xhtml">          
+			<ui:define name = "titulo_menu"> 
+				Página Inicial
+			</ui:define>
+			
+			<ui:define name="content">
+				
+				<p:panel id="panel" header="Simulado (aleatorio, 2012, 2010)">
+			        <p:messages id="messages" />
+				        
+					<!-- Titulo da Questão -->			        
+					<h3> <h:outputText value = "Considere o pseudocódigo a seguir e responda à questão."/> </h3>
+
+					<!-- Quantidade de Questões x Fim -->			        
+					<div align="right">
+						<h:outputText value = "(1/100)"/>						
+					</div>					
+		        
+				
+				<h:panelGrid columns="2" cellpadding="10">
+					HUFFMAN(C) <br/>
+					(1) n = |C| <br/>
+					(2) Q = C <br/>
+					(3) for i=1 to n-1  <br/>
+					(4) ___alocar um novo nó z <br/>
+					(5) ___z.esquerda = x = EXTRAIR_MIN(Q) <br/>
+					(6) ___z.direita = y = EXTRAIR_MIN(Q) <br/>
+					(7) ___z.freq = x.freq + y.freq <br/>
+					(8) ___INSERIR(Q, z) <br/>
+					(9) return EXTRAIR_MIN(Q) //retorna a raiz da árvore <br/>
+			        </h:panelGrid>
+		        	
+		        	  
+					<h3> <h:outputText value = "1. Sobre o pseudocódigo, é correto afirmar que é um algoritmo:"/> </h3>
+			        	
+			        	
+						<p:selectOneRadio id="pergunta" value="#{simuladoBean.pergunta}" layout="grid" columns="3">
+				            <f:selectItems itemLabel="pergunta" var="c" value="#{simuladoBean.perguntas}" itemValue="#{pergunta}" />
+				        </p:selectOneRadio>	
+				    
+			    </p:panel>
+
+
+
+ 			</ui:define>
+			
+   		</ui:composition>
+    		
+        
+    </h:body>  
+</html>

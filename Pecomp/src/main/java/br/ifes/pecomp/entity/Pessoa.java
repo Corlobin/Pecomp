@@ -22,7 +22,7 @@ public class Pessoa extends AbstractEntity {
 	private String curso;
 	
 	private String profissao;
-
+	
 	public String getNome() {
 		return nome;
 	}

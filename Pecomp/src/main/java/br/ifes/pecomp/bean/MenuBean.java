@@ -60,7 +60,7 @@ public class MenuBean extends AbstractBean implements Serializable {
 
     	menuSimulado.addElement(item);
          
-        item = new DefaultMenuItem("Simulado aleat�rio");
+        item = new DefaultMenuItem("Simulado aleatorio");
         item.setUrl("simulado_aleatorio.jsf");
         item.setIcon("fa fa-bars");
 
@@ -108,8 +108,21 @@ public class MenuBean extends AbstractBean implements Serializable {
         menuSair.setUrl("http://google.com.br");
         menuDesempenho.addElement(menuSair);
         
+        DefaultSubMenu menuAdministrador = new DefaultSubMenu("Administrador");
+        
+        item = new DefaultMenuItem("Adicionar Questão");
+        item.setUrl("adicionar_questao.jsf");
+        item.setIcon("fa fa-cog");
 
-    
+        menuAdministrador.addElement(item);
+        
+        item = new DefaultMenuItem("Adicionar Conteúdo");
+        item.setUrl("adicionar_conteudo.jsf");
+        item.setIcon("fa fa-cog");
+        
+        menuAdministrador.addElement(item);
+
+        model.addElement(menuAdministrador);
     }
  
     public MenuModel getModel() {

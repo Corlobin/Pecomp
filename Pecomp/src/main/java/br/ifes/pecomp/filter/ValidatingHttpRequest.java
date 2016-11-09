@@ -45,5 +45,4 @@ public class ValidatingHttpRequest extends HttpServletRequestWrapper {
         return "";
 	}    
 	
-	
 }

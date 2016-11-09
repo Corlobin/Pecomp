@@ -1,14 +1,16 @@
 package br.ifes.pecomp.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@Entity
+@Entity(name="TB_APOSTILA")
 public class Apostila extends AbstractEntity {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6634895957652106558L;
 	
+	@Column(name="TB_IMAGEM")
 	private String imagem;
 	
 	private String titulo;

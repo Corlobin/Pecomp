@@ -1,4 +1,5 @@
 package br.ifes.pecomp.entity;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.ManagedBean;
@@ -6,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="questoes")
-@ManagedBean("questao")
-
+@Table(name="TB_QUESTOES")
 public class Questao extends AbstractEntity {
 	
 	/**
@@ -28,10 +27,16 @@ public class Questao extends AbstractEntity {
 	
 	private List<QuestaoOpcao> opcoes;
 	
+	//private List<Comentario> comentarios;
+	
 	public List<QuestaoOpcao> getOpcoes() {
 		return opcoes;
 	}
 
+	public Questao(){
+		super();
+	}
+	
 	public Questao(Integer ano, String titulo, String enunciado, Materia materia, String texto,
 			List<QuestaoOpcao> opcoes) {
 		super();
@@ -87,6 +92,10 @@ public class Questao extends AbstractEntity {
 		this.texto = texto;
 	}
 	
-	
+	public void inicializaQuestoes()
+	{
+		this.opcoes = new ArrayList<QuestaoOpcao>();
+	}
+		
 
 }

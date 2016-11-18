@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.EntityManager;
 
 import br.ifes.pecomp.entity.Materia;
 import br.ifes.pecomp.entity.Questao;
@@ -32,18 +33,18 @@ public class SimuladoBean extends AbstractBean implements Serializable  {
 	
 	private Integer quantidadeQuestoesAleatorias;
 	
-	
 	private ArrayList<String> perguntas;
 	
 	private String pergunta;
 	
+	private EntityManager entityManager;
 	
 
 	@PostConstruct
     public void init() {
 		    	
-		questaoRepository = new QuestaoRepositoryImpl();
-		materiaRepository = new MateriaRepositoryImpl();
+		questaoRepository = new QuestaoRepositoryImpl(entityManager);
+		materiaRepository = new MateriaRepositoryImpl(entityManager);
     	perguntas = new ArrayList<String>();
     	
 		questoes = questaoRepository.getAll();
@@ -51,14 +52,11 @@ public class SimuladoBean extends AbstractBean implements Serializable  {
     	
     	quantidadeQuestoesAleatorias = 0;
     	perguntas.add("Aproximado");
-    	perguntas.add("Divisão-e-conquista");
+    	perguntas.add("Divisï¿½o-e-conquista");
     	perguntas.add("Guloso");
     	perguntas.add("Recursivo");
     	perguntas.add("Tentativa e erro");
     	
-    	
-    	
-    	    	
     }
 	
 

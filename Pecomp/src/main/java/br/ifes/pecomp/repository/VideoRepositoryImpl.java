@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+
 import br.ifes.pecomp.entity.Video;
 
 
@@ -12,8 +15,9 @@ public class VideoRepositoryImpl extends AbstractRepository implements Serializa
  
 	private static final long serialVersionUID = 1L;
 	
-	public VideoRepositoryImpl(){
-		super();
+	@Inject
+	public VideoRepositoryImpl(EntityManager entityManager) {
+		super(entityManager);
 	}
 	
 	public List<Video> findAll() {

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="templates/template_page.xhtml">
+		<ui:define name="titulo_menu"> 
+				Página de Perfil
+			</ui:define>
+
+		<ui:define name="content">
+		
+			<h1 style="margin-top:50; ">Meu perfil</h1>
+			<p:separator />
+		
+			<h:form id="formPerfil">
+
+				<h:panelGrid columns="2">
+
+					<h:panelGrid columns="1">
+
+						<f:facet name="header">
+							<p:graphicImage library="TemaPadrao" name="images/aluno5.png" />
+
+							<p:fileUpload fileUploadListener="#{perfilBean.handleFileUpload}"
+								mode="advanced" update="messages" auto="true" sizeLimit="100000"
+								allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+							<p:growl id="messages" showDetail="true" />
+						</f:facet>
+
+					</h:panelGrid>
+
+					<h:panelGrid columns="3">
+
+						<p:outputLabel for="name" value="Nome" />
+						<p:inputText id="name" value="#{perfilBean.pessoa.nome}"
+							required="true" label="Nome">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<p:message for="name" />
+
+						<p:outputLabel for="email" value="Email" />
+						<p:inputText id="email" value="#{perfilBean.pessoa.email}"
+							required="true" label="Email">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<p:message for="email" />
+
+						<p:outputLabel for="dataNascimento" value="Data de Nascimento " />
+						<p:inputMask id="dataNascimento"
+							value="#{perfilBean.pessoa.dataNascimento}" mask="99/99/9999"
+							required="true" />
+						<p:message for="dataNascimento" />
+
+						<p:outputLabel for="curso" value="Curso" />
+						<p:selectOneMenu id="curso" value="#{perfilBean.curso}"
+							style="width:200px" required="true">
+							<f:selectItem itemLabel="Selecione" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItems value="#{perfilBean.cursos}" />
+						</p:selectOneMenu>
+						<p:message for="curso" />
+
+						<p:outputLabel for="instituicao" value="Instituição" />
+						<p:selectOneMenu id="instituicao"
+							value="#{perfilBean.instituicao}" style="width:200px"
+							required="true">
+							<f:selectItem itemLabel="Selecione" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItems value="#{perfilBean.instituicoes}" />
+						</p:selectOneMenu>
+						<p:message for="instituicao" />
+
+					</h:panelGrid>
+				</h:panelGrid>
+
+				<p:spacer height="20" />
+
+				<h:panelGrid columns="2">
+
+					<p:commandButton id="submitButton" value="Atualizar dados"
+						update="@parent" actionListener="#{perfilBean.save}"
+						icon="ui-icon-check" />
+
+				</h:panelGrid>
+				<p:spacer height="25" />
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

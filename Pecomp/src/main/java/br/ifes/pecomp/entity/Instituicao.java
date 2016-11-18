@@ -4,6 +4,15 @@ import javax.persistence.Entity;
 @Entity
 public class Instituicao extends AbstractEntity  {
 	
+	public Instituicao() {
+		super();
+	}
+	
+	public Instituicao(String nome) {
+		super();
+		this.Nome = nome;
+	}
+	
 	/**
 	 * 
 	 */
@@ -21,6 +30,7 @@ public class Instituicao extends AbstractEntity  {
 		Nome = nome;
 	}
 
+	
 	public String getInstituicaoURL() {
 		return InstituicaoURL;
 	}
@@ -29,5 +39,10 @@ public class Instituicao extends AbstractEntity  {
 		InstituicaoURL = instituicaoURL;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return this.getNome();
+	}
 	
 }

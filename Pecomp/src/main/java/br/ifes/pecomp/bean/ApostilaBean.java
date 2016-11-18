@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.EntityManager;
 
 import br.ifes.pecomp.entity.Apostila;
 import br.ifes.pecomp.repository.ApostilaRepositoryImpl;
@@ -25,9 +26,11 @@ public class ApostilaBean extends AbstractBean implements Serializable {
      
     private ApostilaRepositoryImpl repository;
      
+    private EntityManager entityManager;
+    
     @PostConstruct
     public void init() {
-        repository = new ApostilaRepositoryImpl();
+        repository = new ApostilaRepositoryImpl(entityManager);
     	apostilas = repository.findAll();
     }
  

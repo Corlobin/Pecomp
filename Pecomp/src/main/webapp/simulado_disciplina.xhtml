@@ -21,7 +21,7 @@
 				        <h:panelGrid columns="2" cellpadding="5">
 				            <h:outputLabel for="ano" value="Selecione uma disciplina:" />
 							<p:selectOneMenu id="ano" value="#{simuladoBean.materia}" style="width:150px">
-				                <f:selectItem itemLabel="Selecione uma disciplina" itemValue="" noSelectionOption="true" />
+				                <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
 				                <f:selectItems value="#{simuladoBean.materias}" />
 				            </p:selectOneMenu>
 				    	<p:commandButton value="Iniciar" update="panel"  />

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.EntityManager;
 
 import br.ifes.pecomp.entity.Livro;
 import br.ifes.pecomp.repository.LivroRepositoryImpl;
@@ -24,10 +25,12 @@ public class LivroBean extends AbstractBean implements Serializable {
     private Livro livroSelecionado;
      
     private LivroRepositoryImpl repository;
+    
+    private EntityManager entityManager;
      
     @PostConstruct
     public void init() {
-        repository = new LivroRepositoryImpl();
+        repository = new LivroRepositoryImpl(entityManager);
     	livros = repository.findAll();
     }
 

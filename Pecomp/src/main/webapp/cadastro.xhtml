@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo_menu">Sistema</ui:insert></title>
+
+</h:head>
+
+<h:body>
+
+	<div class="faixa-inicial">
+		<h:graphicImage id="logo-principal" library="TemaPadrao"
+			name="images/logo.png" />
+	</div>
+
+	<div id="outer" align="center" class="ui-fluid">
+
+		<div id="form-cadastro">
+
+			<p:panel id="panel" header="CADASTRO" style="width:450px;margin-bottom:10px;">
+				<h:form action="index" method="post">
+					<p:focus context="panel" />
+					<p:messages />
+
+					<p:spacer height="10" />
+
+					<!-- Verificar necessidade dessa linha -->
+					<p:messages id="messages" showDetail="true" autoUpdate="true" />
+
+					<h:panelGrid columns="3">
+						<p:outputLabel for="name" value="Nome" />
+						<p:inputText id="name" value="#{cadastroBean.pessoa.nome}"
+							required="true" label="Nome">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<p:message for="name" />
+
+						<p:outputLabel for="email" value="Email" />
+						<p:inputText id="email" value="#{cadastroBean.pessoa.email}"
+							required="true" label="Email">
+							<f:validateLength minimum="2" />
+						</p:inputText>
+						<p:message for="email" />
+
+						<p:outputLabel for="dataNascimento" value="Data de Nascimento " />
+						<p:inputMask id="dataNascimento"
+							value="#{cadastroBean.pessoa.dataNascimento}" mask="99/99/9999"
+							required="true" />
+						<p:message for="dataNascimento" />
+
+						<p:outputLabel for="curso" value="Curso" />
+						<p:selectOneMenu id="curso" value="#{cadastroBean.curso}"
+							style="width:200px" required="true">
+							<f:selectItem itemLabel="Selecione" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItems value="#{cadastroBean.cursos}" />
+						</p:selectOneMenu>
+						<p:message for="curso" />
+
+						<p:outputLabel for="instituicao" value="Instituição" />
+						<p:selectOneMenu id="instituicao"
+							value="#{cadastroBean.instituicao}" style="width:200px"
+							required="true">
+							<f:selectItem itemLabel="Selecione" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItems value="#{cadastroBean.instituicoes}" />
+						</p:selectOneMenu>
+						<p:message for="instituicao" />
+
+						<h:outputLabel for="senha" value="Senha" />
+						<p:password id="senha" value="#{cadastroBean.pessoa.senha}"
+							match="senha" label="Senha" required="true" />
+						<p:message for="senha" />
+
+						<h:outputLabel for="confirmaSenha" value="Confirmação de senha" />
+						<p:password id="confirmaSenha"
+							value="#{cadastroBean.pessoa.senha}" label="ConfirmaSenha"
+							required="true" />
+						<p:message for="confirmaSenha" />
+					</h:panelGrid>
+
+					<p:spacer height="20" />
+
+					<h:panelGrid columns="2">
+
+						<p:commandButton id="submitButton" value="Cadastrar"
+							update="@parent" actionListener="#{cadastroBean.save}"
+							icon="ui-icon-check" />
+
+						<p:button outcome="index" value="Cancelar"
+							icon="fa fa-fw fa-remove" />
+
+					</h:panelGrid>
+					<p:spacer height="25" />
+
+				</h:form>
+
+			</p:panel>
+		</div>
+
+	</div>
+	<h:outputStylesheet library="TemaPadrao" name="css/estilo_padrao.css" />
+
+</h:body>
+</html>
+
+<!--<p:outputLabel for="profissao" value="Profissão" />
+							<p:inputText id="profissao"
+								value="#{cadastroBean.pessoa.profissao}" required="true"
+								label="Profissao">
+								<f:validateLength minimum="2" />
+							</p:inputText><p:message for="profissao" />-->

@@ -29,9 +29,9 @@ public class MenuBean extends AbstractBean implements Serializable {
         model = new DefaultMenuModel();
 
         //First submenu
-        DefaultSubMenu menuInicio = new DefaultSubMenu("Inicio");
+        DefaultSubMenu menuInicio = new DefaultSubMenu("Início");
                  
-        DefaultMenuItem item = new DefaultMenuItem("Noticias");
+        DefaultMenuItem item = new DefaultMenuItem("Notícias");
         item.setIcon("fa fa-newspaper-o");
         item.setUrl("noticias.jsf");
         menuInicio.addElement(item);
@@ -41,6 +41,11 @@ public class MenuBean extends AbstractBean implements Serializable {
         item = new DefaultMenuItem("Meu perfil");
         item.setIcon("fa fa-user");
         item.setUrl("perfil.jsf");
+        menuInicio.addElement(item);
+        
+        item = new DefaultMenuItem("Cadastro - Provisório");
+        item.setIcon("fa fa-user");
+        item.setUrl("cadastro.jsf");
         menuInicio.addElement(item);
          
         
@@ -60,7 +65,7 @@ public class MenuBean extends AbstractBean implements Serializable {
 
     	menuSimulado.addElement(item);
          
-        item = new DefaultMenuItem("Simulado aleatorio");
+        item = new DefaultMenuItem("Simulado aleatório");
         item.setUrl("simulado_aleatorio.jsf");
         item.setIcon("fa fa-bars");
 
@@ -69,7 +74,7 @@ public class MenuBean extends AbstractBean implements Serializable {
         model.addElement(menuSimulado);
 
     
-        DefaultSubMenu menuConteudos = new DefaultSubMenu("Conteudos");
+        DefaultSubMenu menuConteudos = new DefaultSubMenu("Conteúdos");
         
         item = new DefaultMenuItem("Livros");
         item.setUrl("livros.jsf");
@@ -81,7 +86,7 @@ public class MenuBean extends AbstractBean implements Serializable {
         item.setIcon("fa fa-book");
         menuConteudos.addElement(item);
 
-        item = new DefaultMenuItem("Videos");
+        item = new DefaultMenuItem("Vídeos");
         item.setUrl("videos.jsf");
         item.setIcon("fa fa-video-camera");
         menuConteudos.addElement(item);
@@ -96,8 +101,8 @@ public class MenuBean extends AbstractBean implements Serializable {
         item.setIcon("fa fa-line-chart");
         menuDesempenho.addElement(item);
          
-        item = new DefaultMenuItem("Escolas");
-        item.setUrl("http://www.primefaces.org");
+        item = new DefaultMenuItem("Instituições");
+        item.setUrl("desempenho_instituicao.jsf");
         item.setIcon("fa fa-bar-chart-o");
         menuDesempenho.addElement(item);
 

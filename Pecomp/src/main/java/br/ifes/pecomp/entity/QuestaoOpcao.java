@@ -11,7 +11,20 @@ public class QuestaoOpcao extends AbstractEntity {
 
 	private String texto;
 	
-	private QuestaoOpcao resposta;
+	private boolean gabarito;
+	
+	public QuestaoOpcao(String string) {
+		this.texto = string;
+		// TODO Auto-generated constructor stub
+	}
+
+	public boolean getGabarito() {
+		return gabarito;
+	}
+
+	public void setGabarito(boolean gabarito) {
+		this.gabarito = gabarito;
+	}
 
 	public String getTexto() {
 		return texto;
@@ -20,14 +33,5 @@ public class QuestaoOpcao extends AbstractEntity {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-
-	public QuestaoOpcao getResposta() {
-		return resposta;
-	}
-
-	public void setResposta(QuestaoOpcao resposta) {
-		this.resposta = resposta;
-	}
-	
 	
 }

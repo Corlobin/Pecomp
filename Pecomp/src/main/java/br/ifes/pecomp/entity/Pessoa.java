@@ -1,17 +1,19 @@
 package br.ifes.pecomp.entity;
 
 import java.util.Date;
+
 import javax.persistence.Entity;
 
 @Entity
 public class Pessoa extends AbstractEntity {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8942577475182858896L;
 
 	private String nome;
+	
+	private String email;
+	
+	private String senha;
 	
 	private Date dataNascimento;
 	
@@ -19,7 +21,7 @@ public class Pessoa extends AbstractEntity {
 		
 	private Date dataEntrou;
 	
-	private String curso;
+	private Curso curso;
 	
 	private String profissao;
 	
@@ -29,6 +31,22 @@ public class Pessoa extends AbstractEntity {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public Date getDataNascimento() {
@@ -43,7 +61,7 @@ public class Pessoa extends AbstractEntity {
 		return instituicao;
 	}
 
-	public void setInstituicao(Instituicao instituicao) {
+	public void setInstituiccao(Instituicao instituicao) {
 		this.instituicao = instituicao;
 	}
 
@@ -55,11 +73,11 @@ public class Pessoa extends AbstractEntity {
 		this.dataEntrou = dataEntrou;
 	}
 
-	public String getCurso() {
+	public Curso getCurso() {
 		return curso;
 	}
 
-	public void setCurso(String curso) {
+	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 

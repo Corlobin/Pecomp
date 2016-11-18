@@ -1,8 +1,71 @@
 body {
 	background-color: #eeeeee;
-	font-size: 12px				
+	font-size: 12px
 }
 
+#form-cadastro {
+	position: absolute;
+	top: 40%;
+	left: 38%;
+	margin-top: -50px;
+	margin-left: -50px;
+	font-size: 14px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 8px #CCCCCC; /*cinza*/
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-justify-content: center;
+}
 
+#form-login {
+	position: absolute;
+	top: 48%;
+	left: 38%;
+	margin-top: -50px;
+	margin-left: -50px;
+	font-size: 14px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 8px #CCCCCC; /*cinza*/
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-justify-content: center;
+}
 
+.faixa-inicial {
+	position: relative;
+	width: 100%;
+	display: block;
+	height: 50%;
+	padding: 30% 0% 0% 0%;
+	background-color: #000080; /*azul escuro*/
+	border-radius: 4px;
+	box-shadow: 2px 2px 2px #CCCCCC; /*cinza*/
+}
 
+#logo-principal {
+	position: fixed;
+	top: 10%;
+	left: 36%;
+	width: 330px;
+	height: 130px;
+	z-index: 2;
+}
+
+.formulario-login {
+	position: absolute;
+	width: 30%;
+	height: 50%;
+	top: 30%;
+	left: 35%;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 2px 2px 8px #CCCCCC; /*cinza*/
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-justify-content: center;
+}
+
+.header-padrao{
+	background-image: none;
+	background-color:#000080!important; /*azul escuro*/
+}

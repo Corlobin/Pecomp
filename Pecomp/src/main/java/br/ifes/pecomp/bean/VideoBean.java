@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.EntityManager;
 
 import br.ifes.pecomp.entity.Video;
 import br.ifes.pecomp.repository.VideoRepositoryImpl;
@@ -25,9 +26,11 @@ public class VideoBean extends AbstractBean implements Serializable {
      
     private VideoRepositoryImpl repository;
      
+    private EntityManager entityManager;
+    
     @PostConstruct
     public void init() {
-        repository = new VideoRepositoryImpl();
+        repository = new VideoRepositoryImpl(entityManager);
     	videos = repository.findAll();
     }
 

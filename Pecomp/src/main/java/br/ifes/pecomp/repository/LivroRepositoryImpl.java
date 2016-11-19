@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
 import br.ifes.pecomp.entity.Livro;
 
@@ -16,8 +15,8 @@ public class LivroRepositoryImpl extends AbstractRepository implements Serializa
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	public LivroRepositoryImpl(EntityManager entityManager) {
-		super(entityManager);
+	public LivroRepositoryImpl() {
+		super();
 	}
 	
 	public List<Livro> findAll() {

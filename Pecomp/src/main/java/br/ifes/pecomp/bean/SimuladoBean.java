@@ -37,14 +37,11 @@ public class SimuladoBean extends AbstractBean implements Serializable  {
 	
 	private String pergunta;
 	
-	private EntityManager entityManager;
-	
-
 	@PostConstruct
     public void init() {
 		    	
-		questaoRepository = new QuestaoRepositoryImpl(entityManager);
-		materiaRepository = new MateriaRepositoryImpl(entityManager);
+		questaoRepository = new QuestaoRepositoryImpl();
+		materiaRepository = new MateriaRepositoryImpl();
     	perguntas = new ArrayList<String>();
     	
 		questoes = questaoRepository.getAll();

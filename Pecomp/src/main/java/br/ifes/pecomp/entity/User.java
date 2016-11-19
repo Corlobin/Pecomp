@@ -2,33 +2,60 @@ package br.ifes.pecomp.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@Entity
-public class User implements Serializable {
+@Entity(name="TB_USUARIO")
+public class User extends AbstractEntity implements Serializable {
  
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Column(name="TB_USU_FIRSTNAME")
 	private String firstname;
      
+	@Column(name="TB_USU_LASTNAME")
     private String lastname; 
 
+	@Column(name="TB_USU_IDADE")
 	private Integer age;
 	
+	@Column(name="TB_USU_RUA")
 	private String street;
 	
+	@Column(name="TB_USU_CIDADE")
 	private String city;
 	
+	@Column(name="TB_USU_COD_POSTAL")
 	private String postalCode;
 	
+	@Column(name="TB_USU_INFO")
 	private String info;
 	
+	@Column(name="TB_USU_EMAIL")
 	private String email;
 	
+	@Column(name="TB_USU_TELEFONE")
 	private String phone;
+	
+	
+	
+	public User(String firstname, String lastname, Integer age, String street, String city, String postalCode,
+			String info, String email, String phone) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.age = age;
+		this.street = street;
+		this.city = city;
+		this.postalCode = postalCode;
+		this.info = info;
+		this.email = email;
+		this.phone = phone;
+	}
+
 	
 	public String getFirstname() {
 	   return firstname;

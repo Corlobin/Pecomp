@@ -26,11 +26,10 @@ public class VideoBean extends AbstractBean implements Serializable {
      
     private VideoRepositoryImpl repository;
      
-    private EntityManager entityManager;
     
     @PostConstruct
     public void init() {
-        repository = new VideoRepositoryImpl(entityManager);
+        repository = new VideoRepositoryImpl();
     	videos = repository.findAll();
     }
 

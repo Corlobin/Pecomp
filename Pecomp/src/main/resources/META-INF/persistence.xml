@@ -4,11 +4,25 @@
      http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
 
-	<persistence-unit name="pecomp">
+	<persistence-unit name="Pecomp">
+	
+
+		<class>br.ifes.pecomp.entity.Apostila</class>
+		<class>br.ifes.pecomp.entity.Curso</class>
+		<class>br.ifes.pecomp.entity.Instituicao</class>
+		<class>br.ifes.pecomp.entity.Livro</class>
+		<class>br.ifes.pecomp.entity.Materia</class>
+		<class>br.ifes.pecomp.entity.Pessoa</class>
+		<class>br.ifes.pecomp.entity.Poscomp</class>
+		<class>br.ifes.pecomp.entity.QuestaoOpcao</class>
+		<class>br.ifes.pecomp.entity.Questao</class>
+		<class>br.ifes.pecomp.entity.User</class>
+		<class>br.ifes.pecomp.entity.Video</class>
+	
 		<properties>
 			<!-- dados da conexao -->
-			<property name="javax.persistence.jdbc.driver" value="com.postgresql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/pecomp" />
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/pecomp" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
 			<property name="javax.persistence.jdbc.password" value="postgres" />
 
@@ -19,7 +33,7 @@
 			<property name="hibernate.format_sql" value="true" />
 
 			<!-- atualiza o banco, gera as tabelas se for preciso -->
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 
 		</properties>
 	</persistence-unit>

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
 import br.ifes.pecomp.entity.Questao;
 
@@ -14,8 +13,8 @@ public class QuestaoRepositoryImpl extends AbstractRepository implements Seriali
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	public QuestaoRepositoryImpl(EntityManager entityManager) {
-		super(entityManager);
+	public QuestaoRepositoryImpl() {
+		super();
 	}
 	
 	public List<Questao> getAll() {

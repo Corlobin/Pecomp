@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
 import br.ifes.pecomp.entity.Curso;
 
@@ -14,8 +13,8 @@ public class CursoRepositoryImpl extends AbstractRepository implements Serializa
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	public CursoRepositoryImpl(EntityManager entityManager) {
-		super(entityManager);
+	public CursoRepositoryImpl() {
+		super();
 	}
 	
 	public List<Curso> getAll() {

@@ -1,17 +1,28 @@
 package br.ifes.pecomp.entity;
-import javax.persistence.Entity;
+import java.io.Serializable;
 
-@Entity
-public class QuestaoOpcao extends AbstractEntity {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+
+@Entity(name="TB_QST_OPCAO")
+public class QuestaoOpcao extends AbstractEntity implements Serializable {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -9013258064615678645L;
 
+	@Column(name="TB_QST_TEXTO")
 	private String texto;
 	
+	@Column(name="TB_QST_GABARITO")
 	private boolean gabarito;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Questao questao;
+	
 	
 	public QuestaoOpcao(String string) {
 		this.texto = string;
@@ -32,6 +43,14 @@ public class QuestaoOpcao extends AbstractEntity {
 
 	public void setTexto(String texto) {
 		this.texto = texto;
+	}
+
+	public Questao getQuestao() {
+		return questao;
+	}
+
+	public void setQuestao(Questao questao) {
+		this.questao = questao;
 	}
 	
 }

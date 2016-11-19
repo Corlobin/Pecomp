@@ -4,26 +4,31 @@ import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 import org.primefaces.event.FlowEvent;
 
 import br.ifes.pecomp.entity.Questao;
 import br.ifes.pecomp.entity.QuestaoOpcao;
-import br.ifes.pecomp.entity.User;
 import br.ifes.pecomp.repository.PessoaRepositoryImpl;
 
 @ManagedBean(name="userWizard")
-@ViewScoped
-public class UserWizard implements Serializable {
+public class UserWizard extends AbstractBean implements Serializable {
  
 	private static final long serialVersionUID = 1L;
 	
 	private Questao questao = new Questao();
 	
-	private EntityManager entityManager;
+	@PersistenceContext
+	private EntityManager entity;
+	
+	@Inject
+	private transient PessoaRepositoryImpl pessoaRepository = new PessoaRepositoryImpl();
     
 	public UserWizard()
 	{
@@ -34,8 +39,13 @@ public class UserWizard implements Serializable {
 		questao.getOpcoes().add(new QuestaoOpcao(""));
 		questao.getOpcoes().add(new QuestaoOpcao(""));
 		questao.getOpcoes().add(new QuestaoOpcao(""));
-		PessoaRepositoryImpl repo = new PessoaRepositoryImpl(entityManager);
-		repo.testar();
+		
+		if( pessoaRepository != null) {
+			pessoaRepository.testar();
+		}
+		else {
+			System.out.println("nulo ..");
+		}
 	}
      
     public Questao getQuestao() {

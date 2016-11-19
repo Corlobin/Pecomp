@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
 import br.ifes.pecomp.entity.Apostila;
 
@@ -16,8 +15,8 @@ public class ApostilaRepositoryImpl extends AbstractRepository implements Serial
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	public ApostilaRepositoryImpl(EntityManager entityManager) {
-		super(entityManager);
+	public ApostilaRepositoryImpl() {
+		super();
 	}
 	
 	public List<Apostila> findAll() {

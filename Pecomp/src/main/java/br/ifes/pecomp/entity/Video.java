@@ -1,7 +1,8 @@
 package br.ifes.pecomp.entity;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@Entity
+@Entity(name="TB_VIDEO")
 public class Video extends AbstractEntity {
 		
 	/**
@@ -9,17 +10,16 @@ public class Video extends AbstractEntity {
 	 */
 	private static final long serialVersionUID = 7352231341016231928L;
 
+	@Column(name="TB_VID_TITULO")
 	private String titulo;
 
-	private Materia materia;
-		
+	@Column(name="TB_VID_URL")
 	private String URLVideo;
 	
 
-	public Video(String titulo, Materia materia, String uRLVideo) {
+	public Video(String titulo, String uRLVideo) {
 		super();
 		this.titulo = titulo;
-		this.materia = materia;
 		URLVideo = uRLVideo;
 	}
 	public String getTitulo() {
@@ -29,15 +29,6 @@ public class Video extends AbstractEntity {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
-	public Materia getMateria() {
-		return materia;
-	}
-
-	public void setMateria(Materia materia) {
-		this.materia = materia;
-	}
-
 
 	public String getURLVideo() {
 		return URLVideo;

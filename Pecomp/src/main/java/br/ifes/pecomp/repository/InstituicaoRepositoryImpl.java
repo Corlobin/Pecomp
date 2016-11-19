@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
 import br.ifes.pecomp.entity.Instituicao;
 
@@ -14,8 +13,8 @@ public class InstituicaoRepositoryImpl extends AbstractRepository implements Ser
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	public InstituicaoRepositoryImpl(EntityManager entityManager) {
-		super(entityManager);
+	public InstituicaoRepositoryImpl() {
+		super();
 	}
 	
 	public List<Instituicao> getAll() {

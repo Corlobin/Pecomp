@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
 import br.ifes.pecomp.entity.Materia;
 public class MateriaRepositoryImpl extends AbstractRepository implements Serializable {
@@ -13,8 +12,8 @@ public class MateriaRepositoryImpl extends AbstractRepository implements Seriali
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	public MateriaRepositoryImpl(EntityManager entityManager) {
-		super(entityManager);
+	public MateriaRepositoryImpl() {
+		super();
 	}
 	
 	public List<Materia> getAll() {

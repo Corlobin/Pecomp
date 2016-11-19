@@ -26,11 +26,10 @@ public class ApostilaBean extends AbstractBean implements Serializable {
      
     private ApostilaRepositoryImpl repository;
      
-    private EntityManager entityManager;
     
     @PostConstruct
     public void init() {
-        repository = new ApostilaRepositoryImpl(entityManager);
+        repository = new ApostilaRepositoryImpl();
     	apostilas = repository.findAll();
     }
  

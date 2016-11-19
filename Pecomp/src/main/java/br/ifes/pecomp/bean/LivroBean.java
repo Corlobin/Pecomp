@@ -26,11 +26,10 @@ public class LivroBean extends AbstractBean implements Serializable {
      
     private LivroRepositoryImpl repository;
     
-    private EntityManager entityManager;
      
     @PostConstruct
     public void init() {
-        repository = new LivroRepositoryImpl(entityManager);
+        repository = new LivroRepositoryImpl();
     	livros = repository.findAll();
     }
 

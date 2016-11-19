@@ -32,13 +32,10 @@ public class CadastroBean extends AbstractBean implements Serializable {
 	
 	private CursoRepositoryImpl cursosRepository;
 	
-	private EntityManager entityManager;
-	
-	
 	@PostConstruct
     public void init() {
-		instituicoesRepository = new InstituicaoRepositoryImpl(entityManager);
-		cursosRepository = new CursoRepositoryImpl(entityManager);
+		instituicoesRepository = new InstituicaoRepositoryImpl();
+		cursosRepository = new CursoRepositoryImpl();
 	}
 	
 	

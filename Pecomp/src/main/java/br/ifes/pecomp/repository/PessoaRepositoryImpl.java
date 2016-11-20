@@ -26,13 +26,16 @@ public class PessoaRepositoryImpl extends AbstractRepository implements Serializ
 		return pessoas;
 	}
 	
-	public Pessoa findByUsuarioAndSenha(String usuario, String senha)
+	public Pessoa findByUsuarioAndSenha(String email, String senha)
 	{
-		TypedQuery<Pessoa> query = getSession().createQuery("select obj from Pessoa obj where obj.nome = :nome and obj.senha :senha ", Pessoa.class);
-		query.setParameter("nome", usuario);
+		TypedQuery<Pessoa> query = getSession().createQuery("select obj from Pessoa obj where obj.email = :email and obj.senha = :senha", Pessoa.class);
+		query.setParameter("email", email);
 		query.setParameter("senha", senha);		
-		
-		Pessoa pessoa = query.getSingleResult();
+		Pessoa pessoa = null;
+		try{ 
+			pessoa = query.getSingleResult();
+		}
+		catch(Exception ex) { }
 		
 		return pessoa;
 	}
@@ -42,9 +45,9 @@ public class PessoaRepositoryImpl extends AbstractRepository implements Serializ
 	//se retornar um usário, acesso permitido
 	//se não retornar nenhum usuário, acesso negado
 	//----- public Pessoa getUsuario( String email, String senha) {
-	public boolean possuiAcesso( String email, String senha) {
-		return (email == "hanna@email.com") && (senha == "123");
-    }
+	//	public boolean possuiAcesso( String email, String senha) {
+	//		return (email == "hanna@email.com") && (senha == "123");
+	//    }
 
 	@SuppressWarnings("unchecked")
 	public void testar(){

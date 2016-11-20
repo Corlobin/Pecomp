@@ -50,12 +50,7 @@
 						</p:inputText>
 						<p:message for="email" />
 
-						<p:outputLabel for="dataNascimento" value="Data de Nascimento " />
-						<p:inputMask id="dataNascimento"
-							value="#{cadastroBean.pessoa.dataNascimento}" mask="99/99/9999"
-							required="true" />
-						<p:message for="dataNascimento" />
-
+	
 						<p:outputLabel for="curso" value="Curso" />
 						<p:selectOneMenu id="curso" value="#{cadastroBean.curso}"
 							style="width:200px" required="true">
@@ -77,14 +72,23 @@
 
 						<h:outputLabel for="senha" value="Senha" />
 						<p:password id="senha" value="#{cadastroBean.pessoa.senha}"
-							match="senha" label="Senha" required="true" />
+							match="senha" label="Senha" required="true" feedback="true"/>
 						<p:message for="senha" />
 
 						<h:outputLabel for="confirmaSenha" value="Confirmação de senha" />
 						<p:password id="confirmaSenha"
 							value="#{cadastroBean.pessoa.senha}" label="ConfirmaSenha"
-							required="true" />
+							required="true" feedback="false"/>
 						<p:message for="confirmaSenha" />
+	
+						<p:outputLabel for="dataNascimento" value="Data de Nascimento " />
+						<p:calendar id="dataNascimento" value="#{cadastroBean.pessoa.dataNascimento}" pattern="dd-MM-yyyy" mask="true" required="true"/>
+						<!-- <p:inputMask id="dataNascimento"
+							value="#{cadastroBean.pessoa.dataNascimento}" mask="99/99/9999"
+							required="true" /> -->
+						<p:message for="dataNascimento" />
+	
+	
 					</h:panelGrid>
 
 					<p:spacer height="20" />

@@ -7,38 +7,43 @@ import javax.faces.context.FacesContext;
 public class AbstractBean {
 	
 	public void sucess() {
-        addMessage("Success", "Salvo");
+        addMessageSucess("Success", "Salvo");
     }     
     
 	public void sucess(String mensagem) {
-        addMessage("Success", mensagem);
+        addMessageSucess("Success", mensagem);
     }
      
     public void update() {
-        addMessage("Success", "Atualizado");
+        addMessageSucess("Success", "Atualizado");
     }
     
     public void update(String mensagem) {
-        addMessage("Success", mensagem);
+        addMessageSucess("Success", mensagem);
     }
      
     public void delete() {
-        addMessage("Success", "Data deleted");
+        addMessageSucess("Success", "Data deleted");
     }
     public void delete(String mensagem) {
-        addMessage("Success", mensagem);
+        addMessageSucess("Success", mensagem);
     }
 
     public void error() {
-        addMessage("Error", "Error");
+        addMessageError("Ocorreu um erro", "Error");
     }
 
     public void error(String mensagem) {
-        addMessage("Error", mensagem);
+        addMessageError("Ocorreu um erro", mensagem);
     }
    
-    public void addMessage(String summary, String detail) {
+    public void addMessageSucess(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
+    public void addMessageError(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
 }

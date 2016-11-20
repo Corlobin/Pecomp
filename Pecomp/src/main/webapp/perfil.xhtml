@@ -22,7 +22,7 @@
 
 				<h:panelGrid columns="2">
 
-					<h:panelGrid columns="1">
+					<h:panelGrid columns="2">
 
 						<f:facet name="header">
 							<p:graphicImage library="TemaPadrao" name="images/aluno5.png" />
@@ -33,7 +33,37 @@
 							<p:growl id="messages" showDetail="true" />
 						</f:facet>
 
+						<p:commandButton id="modalDialogButton" value="Tirar foto" onclick="PF('dlg2').show();" type="button"/>  
+
+						<h:form>
+							<p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="false" >
+				                <h:form enctype="multipart/form-data">
+				                    <p:outputPanel id="outputPanelStudentUpload">
+				
+				                        <p:layout style="min-width:800px;min-height:300px;" >  
+				                            <p:layoutUnit header="Original Picture" position="west"  size="400" resizable="true">  
+				                                <p:photoCam widgetVar="pc" listener="#{perfilBean.oncapture}" update="photos" />
+				                            </p:layoutUnit>  
+				                            <p:layoutUnit header="Preview Image"  position="center" >  
+				                                <p:imageSwitch effect="zoom" id="photos">
+				                                    <ui:repeat value="#{perfilBean.photos}" var="photo">
+				                                        <p:graphicImage value="/unprotected/#{photo}.png" />
+				                                    </ui:repeat>
+				                                </p:imageSwitch>
+				                            </p:layoutUnit>  
+				                        </p:layout> 
+				                        <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/>
+				                    </p:outputPanel>
+				                </h:form>
+				            </p:dialog> 				        
+				        
+						</h:form>
+
+            				        
+
 					</h:panelGrid>
+
+
 
 					<h:panelGrid columns="3">
 

@@ -17,11 +17,13 @@ public class AbstractRepository
 {
 	//private static SessionFactory sessionFactory = buildSessionFactory();
 	
-	private EntityManager entityManager;
-
+	private static EntityManager entityManager;
+	private static EntityManagerFactory factory;
 	public AbstractRepository() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("Pecomp");
-		this.entityManager = factory.createEntityManager();
+		if( AbstractRepository.factory == null)
+			AbstractRepository.factory = Persistence.createEntityManagerFactory("Pecomp");
+		if( AbstractRepository.entityManager == null)
+			AbstractRepository.entityManager = factory.createEntityManager();
 	}
 	
 	protected EntityManager getEntityManager() {

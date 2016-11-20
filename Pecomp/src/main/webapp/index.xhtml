@@ -55,9 +55,8 @@
 					
 					<h:panelGrid columns="2">
 						
-						
-						<p:button outcome="noticias" value="Entrar" icon="ui-icon-check"/>
-						
+						<p:commandButton actionListener="#{loginBean.verificaAcesso}"  value="Entrar" icon="ui-icon-check"/>
+
 						<p:button outcome="cadastro" value="Cadastrar" icon="fa fa-fw fa-edit"/>
 					
 					</h:panelGrid>

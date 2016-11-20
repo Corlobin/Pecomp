@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
+import br.ifes.pecomp.entity.Pessoa;
 import br.ifes.pecomp.repository.PessoaRepositoryImpl;
 
 @ManagedBean(name = "loginBean")
@@ -22,6 +23,7 @@ public class LoginBean extends AbstractBean implements Serializable {
 
 	public LoginBean() {
 		super();
+		pessoaRepository = new PessoaRepositoryImpl();
 	}
 
 	public String getEmail() {
@@ -40,8 +42,18 @@ public class LoginBean extends AbstractBean implements Serializable {
 		this.senha = senha;
 	}
 	
-	public boolean verificaAcesso(String email, String senha){
-		return pessoaRepository.possuiAcesso(email, senha);
+	
+	public void verificaAcesso()
+	{
+		Pessoa pessoa = pessoaRepository.findByUsuarioAndSenha(email, senha);
+		if (pessoa == null)
+		{
+			this.error("Usuario ou senha invalidos!");
+		}
+		else
+		{
+			this.sucess("Logado com sucesso!");
+		}
 	}
 	
 }

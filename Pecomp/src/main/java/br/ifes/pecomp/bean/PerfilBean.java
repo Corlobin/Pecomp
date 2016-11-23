@@ -9,7 +9,7 @@ import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.imageio.stream.FileImageOutputStream;
@@ -24,17 +24,17 @@ import br.ifes.pecomp.entity.Instituicao;
 import br.ifes.pecomp.entity.Pessoa;
 import br.ifes.pecomp.repository.CursoRepositoryImpl;
 import br.ifes.pecomp.repository.InstituicaoRepositoryImpl;
+import br.ifes.pecomp.repository.PessoaRepositoryImpl;
+
 
 @ManagedBean(value="perfilBean")
-@SessionScoped
+@ViewScoped
 public class PerfilBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    
-    //public Perfil perfil = null;
-    //public Usuario usuario = Fachada.getInstancia().recuperarUsuarioDaSessao();
     public UploadedFile arquivo;
+    
     public StreamedContent foto = null;
     
 	private Pessoa pessoa;
@@ -43,19 +43,58 @@ public class PerfilBean implements Serializable {
 	
 	private InstituicaoRepositoryImpl instituicoesRepository;
 	
+	private List<Instituicao> listInstituicao;
+	
 	private Curso curso;
+	
+	private List<Curso> listCurso;
 	
 	private CursoRepositoryImpl cursosRepository;
 	
+	private PessoaRepositoryImpl pessoaRepository;
+	
    private String filename;
+   
+   private boolean edita;
 	   	
 	@PostConstruct
     public void init() {
 		instituicoesRepository = new InstituicaoRepositoryImpl();
+		listInstituicao = instituicoesRepository.getAll();
+		
 		cursosRepository = new CursoRepositoryImpl();
+		listCurso = cursosRepository.getAll(); 
+		
+		pessoaRepository = new PessoaRepositoryImpl();
+		pessoa = new Pessoa();
+		instituicao = new Instituicao();
+		curso = new Curso();
 	}
 	
-	
+
+	public boolean isEdita() {
+		return edita;
+	}
+
+	public void setEdita(boolean edita) {
+		this.edita = edita;
+	}
+
+	public List<Instituicao> getListInstituicao() {
+		return listInstituicao;
+	}
+
+	public void setListInstituicao(List<Instituicao> listInstituicao) {
+		this.listInstituicao = listInstituicao;
+	}
+
+	public List<Curso> getListCurso() {
+		return listCurso;
+	}
+
+	public void setListCurso(List<Curso> listCurso) {
+		this.listCurso = listCurso;
+	}
 
 	public Curso getCurso() {
 		return curso;
@@ -100,6 +139,11 @@ public class PerfilBean implements Serializable {
         pessoa.setSenha(null);
         
     }
+    
+	public String solicitarAtualizacao(){
+		setEdita(true);
+		return "";
+	}
 
 
     public void handleFileUpload(FileUploadEvent event) {
@@ -133,6 +177,7 @@ public class PerfilBean implements Serializable {
     public String getFilename() {
         return filename;
     }
+    
     public void oncapture(CaptureEvent captureEvent) {
         filename = getRandomImageName();
         byte[] data = captureEvent.getData();
@@ -151,6 +196,18 @@ public class PerfilBean implements Serializable {
             throw new FacesException("Error in writing captured image.", e);
         }
     }
-    
+	
+	/*
+	public String salvarRegistro(){
+		for(Usuario usu: lista){
+			if(usu.getEdita()){
+				UsuarioCrudJDBC objUsuarioCrudJDBC = new UsuarioCrudJDBC();
+				objUsuarioCrudJDBC.alterar(usu);
+			}
+			usu.setEdita(false);
+		}
+		lista = objUsuarioCrudJDBC.listar();
+		return null;
+	}*/
 
 }

@@ -1,13 +1,18 @@
 package br.ifes.pecomp.repository;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.TypedQuery;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import br.ifes.pecomp.entity.Curso;
+import br.ifes.pecomp.entity.Instituicao;
 import br.ifes.pecomp.entity.Pessoa;
 
 public class PessoaRepositoryImpl extends AbstractRepository implements Serializable {
@@ -40,15 +45,20 @@ public class PessoaRepositoryImpl extends AbstractRepository implements Serializ
 		return pessoa;
 	}
 	
-	//Implementar metodo:
-	//busca usuario com nome e senha enviadas
-	//se retornar um usário, acesso permitido
-	//se não retornar nenhum usuário, acesso negado
-	//----- public Pessoa getUsuario( String email, String senha) {
-	//	public boolean possuiAcesso( String email, String senha) {
-	//		return (email == "hanna@email.com") && (senha == "123");
-	//    }
-
+	public Pessoa confereEmailUnico(String email)
+	{
+		TypedQuery<Pessoa> query = getSession().createQuery("select obj from Pessoa obj where obj.email = :email", Pessoa.class);
+		query.setParameter("email", email);
+		Pessoa pessoa = null;
+		try{ 
+			pessoa = query.getSingleResult();
+		}
+		catch(Exception ex) { }
+		
+		return pessoa;
+	}
+	
+	/*
 	@SuppressWarnings("unchecked")
 	public void testar(){
 		
@@ -65,7 +75,7 @@ public class PessoaRepositoryImpl extends AbstractRepository implements Serializ
 		
 		System.out.println("pessoas " + pessoas);
 		
-	}
+	}*/
 	
 
 }

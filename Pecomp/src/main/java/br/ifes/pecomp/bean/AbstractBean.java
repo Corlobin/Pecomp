@@ -7,26 +7,26 @@ import javax.faces.context.FacesContext;
 public class AbstractBean {
 	
 	public void sucess() {
-        addMessageSucess("Success", "Salvo");
+        addMessageSucess("Successo", "Salvo");
     }     
     
 	public void sucess(String mensagem) {
-        addMessageSucess("Success", mensagem);
+        addMessageSucess("Sucesso", mensagem);
     }
      
     public void update() {
-        addMessageSucess("Success", "Atualizado");
+        addMessageSucess("Successo", "Atualizado");
     }
     
     public void update(String mensagem) {
-        addMessageSucess("Success", mensagem);
+        addMessageSucess("Successo", mensagem);
     }
      
     public void delete() {
-        addMessageSucess("Success", "Data deleted");
+        addMessageSucess("Successo", "Data deleted");
     }
     public void delete(String mensagem) {
-        addMessageSucess("Success", mensagem);
+        addMessageSucess("Succesos", mensagem);
     }
 
     public void error() {
@@ -34,7 +34,7 @@ public class AbstractBean {
     }
 
     public void error(String mensagem) {
-        addMessageError("Ocorreu um erro", mensagem);
+        addMessageError("", mensagem);
     }
    
     public void addMessageSucess(String summary, String detail) {

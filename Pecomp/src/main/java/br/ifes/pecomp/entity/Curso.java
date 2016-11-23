@@ -18,6 +18,9 @@ public class Curso extends AbstractEntity implements Serializable  {
 	@OneToMany(mappedBy="curso")
 	private List<Pessoa> pessoas;
 	
+	public Curso(){
+		super();
+	}
 	
 	public Curso(String nome) {
 		super();

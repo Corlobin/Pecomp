@@ -8,8 +8,10 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="TB_PESSOA")
 public class Pessoa extends AbstractEntity {
 	
 	private static final long serialVersionUID = 8942577475182858896L;
@@ -39,6 +41,35 @@ public class Pessoa extends AbstractEntity {
 	@Column(name="TB_PES_PROFISSAO")
 	private String profissao;
 	
+	private String confirmaSenha;
+	
+	
+	public Pessoa() {
+		super();
+	}
+
+	public Pessoa(String nome, String email, String senha, Date dataNascimento, Instituicao instituicao,
+			Date dataEntrou, Curso curso, String profissao) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.dataNascimento = dataNascimento;
+		this.instituicao = instituicao;
+		this.dataEntrou = dataEntrou;
+		this.curso = curso;
+		this.profissao = profissao;
+	}
+	
+
+	public String getConfirmaSenha() {
+		return confirmaSenha;
+	}
+
+	public void setConfirmaSenha(String confirmaSenha) {
+		this.confirmaSenha = confirmaSenha;
+	}
+
 	public String getNome() {
 		return nome;
 	}

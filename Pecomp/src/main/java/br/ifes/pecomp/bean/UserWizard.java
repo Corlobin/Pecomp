@@ -39,13 +39,14 @@ public class UserWizard extends AbstractBean implements Serializable {
 		questao.getOpcoes().add(new QuestaoOpcao(""));
 		questao.getOpcoes().add(new QuestaoOpcao(""));
 		questao.getOpcoes().add(new QuestaoOpcao(""));
-		
+		/*
 		if( pessoaRepository != null) {
 			pessoaRepository.testar();
 		}
 		else {
 			System.out.println("nulo ..");
 		}
+		*/
 	}
      
     public Questao getQuestao() {

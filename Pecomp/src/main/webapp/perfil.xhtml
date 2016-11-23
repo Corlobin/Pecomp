@@ -25,17 +25,15 @@
 					<h:panelGrid columns="2">
 
 						<f:facet name="header">
+							<!-- TODO colocar imagem de forma dinamica -->
 							<p:graphicImage library="TemaPadrao" name="images/aluno5.png" />
-
-							<p:fileUpload fileUploadListener="#{perfilBean.handleFileUpload}"
-								mode="advanced" update="messages" auto="true" sizeLimit="100000"
-								allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-							<p:growl id="messages" showDetail="true" />
 						</f:facet>
 
 						<p:commandButton id="modalDialogButton" value="Tirar foto" onclick="PF('dlg2').show();" type="button"/>  
 
-						<h:form>
+						
+						<!--
+						<h:form>  
 							<p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="false" >
 				                <h:form enctype="multipart/form-data">
 				                    <p:outputPanel id="outputPanelStudentUpload">
@@ -55,11 +53,11 @@
 				                        <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/>
 				                    </p:outputPanel>
 				                </h:form>
-				            </p:dialog> 				        
+				            </p:dialog>
+			            </h:form> 	
+			            -->			        
 				        
-						</h:form>
-
-            				        
+						
 
 					</h:panelGrid>
 
@@ -67,44 +65,23 @@
 
 					<h:panelGrid columns="3">
 
-						<p:outputLabel for="name" value="Nome" />
-						<p:inputText id="name" value="#{perfilBean.pessoa.nome}"
-							required="true" label="Nome">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<p:message for="name" />
+						<p:outputLabel for="nome" value="Nome" />
+						<h:inputText id="nome" value="#{perfilBean.pessoa.nome}" required="true" label="Nome" rendered="#{ perfilBean.edita}" />
+						<h:outputText value="#{perfilBean.pessoa.nome}" rendered="#{not perfilBean.edita}" />
+						<p:message for="nome"/>
 
 						<p:outputLabel for="email" value="Email" />
-						<p:inputText id="email" value="#{perfilBean.pessoa.email}"
-							required="true" label="Email">
-							<f:validateLength minimum="2" />
-						</p:inputText>
-						<p:message for="email" />
+						<h:inputText id="email" value="#{perfilBean.pessoa.email}" required="true" label="Email" rendered="#{ perfilBean.edita}" />
+						<h:outputText value="#{perfilBean.pessoa.email}" rendered="#{not perfilBean.edita}" />
+						<p:message for="email"/>
+
 
 						<p:outputLabel for="dataNascimento" value="Data de Nascimento " />
-						<p:inputMask id="dataNascimento"
-							value="#{perfilBean.pessoa.dataNascimento}" mask="99/99/9999"
-							required="true" />
-						<p:message for="dataNascimento" />
+						<p:calendar id="dataNascimento" value="#{perfilBean.pessoa.dataNascimento}" pattern="dd-MM-yyyy" mask="true" required="true" rendered="#{ perfilBean.edita}"/>
+						<h:outputText value="#{perfilBean.pessoa.dataNascimento}" required="true" label="Data de nascimento" rendered="#{not perfilBean.edita}" />						
+						<p:message for="dataNascimento"/>
 
-						<p:outputLabel for="curso" value="Curso" />
-						<p:selectOneMenu id="curso" value="#{perfilBean.curso}"
-							style="width:200px" required="true">
-							<f:selectItem itemLabel="Selecione" itemValue=""
-								noSelectionOption="true" />
-							<f:selectItems value="#{perfilBean.cursos}" />
-						</p:selectOneMenu>
-						<p:message for="curso" />
 
-						<p:outputLabel for="instituicao" value="Instituição" />
-						<p:selectOneMenu id="instituicao"
-							value="#{perfilBean.instituicao}" style="width:200px"
-							required="true">
-							<f:selectItem itemLabel="Selecione" itemValue=""
-								noSelectionOption="true" />
-							<f:selectItems value="#{perfilBean.instituicoes}" />
-						</p:selectOneMenu>
-						<p:message for="instituicao" />
 
 					</h:panelGrid>
 				</h:panelGrid>
@@ -112,10 +89,9 @@
 				<p:spacer height="20" />
 
 				<h:panelGrid columns="2">
-
-					<p:commandButton id="submitButton" value="Atualizar dados"
-						update="@parent" actionListener="#{perfilBean.save}"
-						icon="ui-icon-check" />
+					<p:commandButton value="Atualizar perfil" actionListener="#{perfilBean.solicitarAtualizacao}" rendered="#{not perfilBean.edita}" />
+					<p:commandButton id="submitButton" value="Salvar atualizações" update="@parent" actionListener="#{perfilBean.save}"
+						icon="ui-icon-check" rendered="#{perfilBean.edita}"/>
 
 				</h:panelGrid>
 				<p:spacer height="25" />

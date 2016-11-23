@@ -110,7 +110,7 @@ public class MenuBean extends AbstractBean implements Serializable {
 
         DefaultMenuItem menuSair = new DefaultMenuItem("Sair");
         menuSair.setIcon("fa fa-arrow-circle-left");
-        menuSair.setUrl("http://google.com.br");
+        menuSair.setUrl("index.jsf");
         menuDesempenho.addElement(menuSair);
         
         DefaultSubMenu menuAdministrador = new DefaultSubMenu("Administrador");

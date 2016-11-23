@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.persistence.TypedQuery;
 
 import br.ifes.pecomp.entity.Instituicao;
+import br.ifes.pecomp.entity.Pessoa;
 
 public class InstituicaoRepositoryImpl extends AbstractRepository implements Serializable {
 
@@ -17,13 +19,22 @@ public class InstituicaoRepositoryImpl extends AbstractRepository implements Ser
 		super();
 	}
 	
+	public Instituicao findByNome(String nome)
+	{
+		TypedQuery<Instituicao> query = getSession().createQuery("select obj from Instituicao obj where obj.nome = :nome", Instituicao.class);
+		query.setParameter("nome", nome);
+		Instituicao i = null;
+		try{ 
+			i = query.getSingleResult();
+		}
+		catch(Exception ex) { }
+		
+		return i;
+	}
+	
 	public List<Instituicao> getAll() {
-        List<Instituicao> lista = new ArrayList<Instituicao>();
-        lista.add( new Instituicao("IFES") );
-        lista.add( new Instituicao("UFES") );
-        lista.add( new Instituicao("UCL") );
-        lista.add( new Instituicao("UVV") );
-        lista.add( new Instituicao("FAESA") );
-        return lista;
+		TypedQuery<Instituicao> query = getSession().createQuery("select obj from Instituicao obj", Instituicao.class);
+		List<Instituicao> instituicoes = query.getResultList();
+		return instituicoes;
     }
 }

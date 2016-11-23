@@ -26,13 +26,12 @@
 		<div id="form-cadastro">
 
 			<p:panel id="panel" header="CADASTRO" style="width:450px;margin-bottom:10px;">
-				<h:form action="index" method="post">
+				<h:form name="cadastro" action="cadastro" method="post">
 					<p:focus context="panel" />
 					<p:messages />
 
 					<p:spacer height="10" />
-
-					<!-- Verificar necessidade dessa linha -->
+					
 					<p:messages id="messages" showDetail="true" autoUpdate="true" />
 
 					<h:panelGrid columns="3">
@@ -49,24 +48,27 @@
 							<f:validateLength minimum="2" />
 						</p:inputText>
 						<p:message for="email" />
+						
+						<p:outputLabel for="dataNascimento" value="Data de Nascimento " />
+						<p:calendar id="dataNascimento" value="#{cadastroBean.pessoa.dataNascimento}" pattern="dd-MM-yyyy" mask="true" required="true"/>
+						<p:message for="dataNascimento" />
 
 	
 						<p:outputLabel for="curso" value="Curso" />
-						<p:selectOneMenu id="curso" value="#{cadastroBean.curso}"
-							style="width:200px" required="true">
+						<p:selectOneMenu id="curso" value="#{cadastroBean.curso.id}"
+							style="width:200px" required="true" label="Curso">
 							<f:selectItem itemLabel="Selecione" itemValue=""
 								noSelectionOption="true" />
-							<f:selectItems value="#{cadastroBean.cursos}" />
+							<f:selectItems value="#{cadastroBean.listCurso}" var="c" itemLabel="#{c.nome}" itemValue="#{c.id}"/>
 						</p:selectOneMenu>
 						<p:message for="curso" />
 
 						<p:outputLabel for="instituicao" value="Instituição" />
-						<p:selectOneMenu id="instituicao"
-							value="#{cadastroBean.instituicao}" style="width:200px"
-							required="true">
+						<p:selectOneMenu id="instituicao" value="#{cadastroBean.instituicao.id}" style="width:200px"
+							required="true" label="Instituição">
 							<f:selectItem itemLabel="Selecione" itemValue=""
 								noSelectionOption="true" />
-							<f:selectItems value="#{cadastroBean.instituicoes}" />
+							<f:selectItems value="#{cadastroBean.listInstituicao}" var="i" itemLabel="#{i.nome}" itemValue="#{i.id}"/>
 						</p:selectOneMenu>
 						<p:message for="instituicao" />
 
@@ -77,16 +79,9 @@
 
 						<h:outputLabel for="confirmaSenha" value="Confirmação de senha" />
 						<p:password id="confirmaSenha"
-							value="#{cadastroBean.pessoa.senha}" label="ConfirmaSenha"
+							value="#{cadastroBean.pessoa.confirmaSenha}" label="ConfirmaSenha"
 							required="true" feedback="false"/>
 						<p:message for="confirmaSenha" />
-	
-						<p:outputLabel for="dataNascimento" value="Data de Nascimento " />
-						<p:calendar id="dataNascimento" value="#{cadastroBean.pessoa.dataNascimento}" pattern="dd-MM-yyyy" mask="true" required="true"/>
-						<!-- <p:inputMask id="dataNascimento"
-							value="#{cadastroBean.pessoa.dataNascimento}" mask="99/99/9999"
-							required="true" /> -->
-						<p:message for="dataNascimento" />
 	
 	
 					</h:panelGrid>
@@ -95,12 +90,9 @@
 
 					<h:panelGrid columns="2">
 
-						<p:commandButton id="submitButton" value="Cadastrar"
-							update="@parent" actionListener="#{cadastroBean.save}"
-							icon="ui-icon-check" />
+						<p:commandButton value="Cadastrar" actionListener="#{cadastroBean.cadastrarPessoa}" icon="ui-icon-check" />
 
-						<p:button outcome="index" value="Cancelar"
-							icon="fa fa-fw fa-remove" />
+						<p:button outcome="index" value="Voltar" icon="fa fa-fw fa-remove" />
 
 					</h:panelGrid>
 					<p:spacer height="25" />

@@ -6,11 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-@Entity(name="TB_INSTITUICAO")
+@Entity
+@Table(name="TB_INSTITUICAO")
 public class Instituicao extends AbstractEntity  {
 	
 	

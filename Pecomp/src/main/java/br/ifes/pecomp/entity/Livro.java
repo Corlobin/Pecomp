@@ -18,7 +18,10 @@ public class Livro extends AbstractEntity  {
 	@Column(name="TB_LVR_URL")
 	private String URLLivro;
 
-		
+	public Livro(){
+		super();
+	}
+	
 	public Livro(String imagem, String titulo, String uRLLivro) {
 		super();
 		this.setImagem(imagem);

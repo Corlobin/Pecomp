@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="templates/template_page.xhtml">
+		<ui:define name="titulo_menu"> 
+				Página de Perfil
+		</ui:define>
+
+		<ui:define name="content">
+
+			<h1 style="margin-top: 50;">Adicionar apostilas</h1>
+			<p:separator />
+
+			<p:panel id="panel" header="Detalhes apostila" style="width:500px;margin-bottom:10px;">
+			<h:form id="formAdicionaLivro" enctype="multipart/form-data">
+
+					<p:messages id="messages" showDetail="true" autoUpdate="true" />
+
+					<h:panelGrid columns="3">
+					
+						<p:outputLabel for="imagem" value="Imagem: " />
+						<p:fileUpload id="imagem" fileUploadListener="#{adicionaApostilaBean.upload}" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+						<p:message for="imagem" />
+						
+						<p:outputLabel for="titulo" value="Título:" />
+						<p:inputText id="titulo" value="#{adicionaApostilaBean.apostila.titulo}" required="true" label="Título"/>
+						<p:message for="titulo" />
+						
+						<p:outputLabel for="url" value="URL de download:" />
+						<p:inputText id="url" value="#{adicionaApostilaBean.apostila.URLApostila}" required="true" label="url"/>
+						<p:message for="url" />
+
+					</h:panelGrid>
+
+				<p:spacer height="20" />
+
+				<h:panelGrid columns="2">
+					<p:commandButton id="submitButton" value="Cadastrar apostila" action="#{adicionaApostilaBean.cadastrarApostila}"
+						icon="ui-icon-check" />
+
+				</h:panelGrid>
+				<p:spacer height="25" />
+				
+
+			</h:form>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

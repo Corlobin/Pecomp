@@ -1,11 +1,8 @@
 package br.ifes.pecomp.filter;
 
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
 
 
 public class ValidatingHttpRequest extends HttpServletRequestWrapper {
@@ -44,5 +41,6 @@ public class ValidatingHttpRequest extends HttpServletRequestWrapper {
 
         return "";
 	}    
+	
 	
 }

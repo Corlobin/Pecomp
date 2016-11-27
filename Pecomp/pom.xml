@@ -9,108 +9,108 @@
 	<description>Plataforma de Ensino para a Pós Graduação</description>
 
 	<properties>
-		<maven.test.skip>true</maven.test.skip>	    
-	        <!--- Configuracao do Sonar-->
-	
-	        <sonar.host.url>https://sonarqube.com</sonar.host.url>
-		<sonar.login>f759ee66d38b65235d4455c5c4db8911581e54a4</sonar.login>    
-	
-	        <!-- Codificacao -->
-	        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>    
-    </properties>
+		<maven.test.skip>true</maven.test.skip>
+		<!--- Configuracao do Sonar -->
+
+		<sonar.host.url>https://sonarqube.com</sonar.host.url>
+		<sonar.login>f759ee66d38b65235d4455c5c4db8911581e54a4</sonar.login>
+
+		<!-- Codificacao -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
 
 
 
 	<dependencies>
-		
-		
-			<dependency>
-	    <groupId>org.seleniumhq.selenium</groupId>
-	    <artifactId>selenium-chrome-driver</artifactId>
-	    <version>3.0.1</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.seleniumhq.selenium</groupId>
-	    <artifactId>selenium-java</artifactId>
-	    <version>3.0.1</version>
-	</dependency>
-	
-	  <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>1.1.7</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>1.1.7</version>
-            <scope>test</scope>
-        </dependency>
-		
-		
-		
+
+
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-tx</artifactId>
-		    <version>4.3.3.RELEASE</version>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>3.0.1</version>
 		</dependency>
 		<dependency>
-    	        <groupId>cglib</groupId>
-		<artifactId>cglib</artifactId>
-		<version>2.2</version>
-	</dependency>
-		
-		<dependency>
-		    <groupId>javax.ejb</groupId>
-		    <artifactId>ejb-api</artifactId>
-		    <version>3.0</version>
-		</dependency>
-		
-		
-		<dependency>
-		  <groupId>rome</groupId>
-		  <artifactId>rome</artifactId>
-		  <version>1.0</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>postgresql</groupId>
-		    <artifactId>postgresql</artifactId>
-		    <version>9.1-901-1.jdbc4</version>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.0.1</version>
 		</dependency>
 
 		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-validator</artifactId>
-		    <version>5.2.4.Final</version>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>1.1.7</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.1.7</version>
+			<scope>test</scope>
 		</dependency>
 
-		
-		
+
+
 		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-core</artifactId>
-		    <version>5.2.3.Final</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-entitymanager</artifactId>
-		    <version>5.2.2.Final</version>
-		</dependency>
-		
-	
-		<dependency>
-		   <groupId>com.sun.faces</groupId>
-		   <artifactId>jsf-api</artifactId>
-		   <version>2.1.7</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>4.3.3.RELEASE</version>
 		</dependency>
 		<dependency>
-		   <groupId>com.sun.faces</groupId>
-		   <artifactId>jsf-impl</artifactId>
-		   <version>2.1.7</version>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>rome</groupId>
+			<artifactId>rome</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901-1.jdbc4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.4.Final</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.3.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.2.2.Final</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.1.7</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.faces/javax.faces-api -->
 		<dependency>
@@ -119,37 +119,30 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>  
-		    <groupId>org.primefaces</groupId>  
-		    <artifactId>primefaces</artifactId>  
-		    <version>6.0</version>  
-		</dependency>
-	
-		<dependency>  
-		    <groupId>org.primefaces.themes</groupId>  
-		    <artifactId>all-themes</artifactId>  
-		    <version>1.0.10</version>  
-		</dependency>  
-			
-		<!-- Pro code style nas paginas -->		
-		<!-- <dependency>
-		    <groupId>org.primefaces.extensions</groupId>
-		    <artifactId>primefaces-extensions</artifactId>
-		    <version>6.0.0</version>
-		</dependency>
 		<dependency>
-		    <groupId>org.primefaces.extensions</groupId>
-		    <artifactId>resources-codemirror</artifactId>
-		    <version>6.0.0</version>
-		</dependency> -->
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.0</version>
+		</dependency>
 
-				
 		<dependency>
-		  <groupId>org.apache.commons</groupId>
-		  <artifactId>commons-digester3</artifactId>
-		  <version>3.2</version>
-		  <classifier>with-deps</classifier>
-		</dependency>	
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+
+		<!-- Pro code style nas paginas -->
+		<!-- <dependency> <groupId>org.primefaces.extensions</groupId> <artifactId>primefaces-extensions</artifactId> 
+			<version>6.0.0</version> </dependency> <dependency> <groupId>org.primefaces.extensions</groupId> 
+			<artifactId>resources-codemirror</artifactId> <version>6.0.0</version> </dependency> -->
+
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-digester3</artifactId>
+			<version>3.2</version>
+			<classifier>with-deps</classifier>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -158,9 +151,9 @@
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>javax.servlet-api</artifactId>
-		    <version>3.1.0</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 
 		<dependency>
@@ -177,19 +170,54 @@
 
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina -->
 		<dependency>
-		    <groupId>org.apache.tomcat</groupId>
-		    <artifactId>tomcat-catalina</artifactId>
-		    <version>9.0.0.M11</version>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-catalina</artifactId>
+			<version>9.0.0.M11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version> <!-- makesure correct version here -->
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-digester/commons-digester -->
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1</version>
 		</dependency>
 
 	</dependencies>
+	
 	<repositories>
-    <repository>
-        <id>prime-repo</id>
-        <name>PrimeFaces Maven Repository</name>
-        <url>http://repository.primefaces.org</url>
-        <layout>default</layout>
-    </repository>
-</repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 
 </project>

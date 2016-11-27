@@ -20,6 +20,10 @@ public class Materia extends AbstractEntity {
 		super();
 		this.descricao = descricao;
 	}
+	
+	public Materia(){
+		super();
+	}
 
 
 	public String getDescricao() {

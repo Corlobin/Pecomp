@@ -26,11 +26,15 @@ public class VideoBean extends AbstractBean implements Serializable {
      
     private VideoRepositoryImpl repository;
      
+    public VideoBean(){
+    	
+    }
     
     @PostConstruct
     public void init() {
         repository = new VideoRepositoryImpl();
     	videos = repository.findAll();
+    	videoSelecionado = new Video();
     }
 
     public List<Video> getVideos() {
@@ -55,6 +59,13 @@ public class VideoBean extends AbstractBean implements Serializable {
 
 	public void setRepository(VideoRepositoryImpl repository) {
 		this.repository = repository;
+	}
+	
+	public String cadastrarVideo(){
+		repository.inserir(videoSelecionado);
+		this.sucess("Vídeo cadastrado com sucesso!");
+
+		return "";
 	}
 
 	

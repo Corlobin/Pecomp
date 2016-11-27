@@ -50,6 +50,7 @@ public class Questao extends AbstractEntity {
 
 	public Questao(){
 		super();
+		materia = new Materia();
 	}
 	
 	public Questao(Integer ano, String titulo, String enunciado, Materia materia, String texto,

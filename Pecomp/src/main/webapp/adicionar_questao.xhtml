@@ -15,15 +15,19 @@
 		<ui:define name="content">
 
 			<h:form>
-		        <h:panelGrid columns="3">
+				<h1 style="margin-top: 50;">Adicionar questão</h1>
+				<p:separator />
+				<p:spacer height="20" />
+			
+				<h:panelGrid style="width:700px">
 					<p:growl id="growl" sticky="true" showDetail="true" />
-	
+
 					<p:wizard flowListener="#{userWizard.onFlowProcess}">
 						<p:tab id="enunciado" title="Enunciado">
 							<p:panel header="Detalhes Enunciado">
 								<p:messages />
 								<h:panelGrid columns="2" columnClasses="label, value">
-	
+
 									<h:outputText value="Ano: " />
 									<p:selectOneMenu id="ano" value="#{userWizard.questao.ano}"
 										style="width:150px">
@@ -34,57 +38,50 @@
 										<f:selectItem itemLabel="2012" itemValue="2012" />
 										<f:selectItem itemLabel="2013" itemValue="2013" />
 									</p:selectOneMenu>
-	
-									<h:outputText value="Matéria select: " />
-									<p:selectOneMenu id="materia"
-										value="#{userWizard.questao.materia}" style="width:150px">
-										<f:selectItem itemLabel="Selecione" itemValue=""
-											noSelectionOption="true" />
-										<f:selectItems value="#{simuladoBean.materias}" />
-									</p:selectOneMenu>
-	
-									<h:outputText value="Matéria: " />
-									<p:inputText value="#{userWizard.questao.materia}"
-										label="Materias" />
-	
+
+									<h:outputText value="Colocar matéria aqui!!!" />
+									<h:outputText value="Colocar matéria aqui!!!" />
+
+									
+
 									<h:outputText value="Título: " />
 									<p:inputTextarea value="#{userWizard.questao.titulo}"
 										label="Titulo" rows="6" cols="50" />
-	
+
 									<h:outputText value="Texto: " />
 									<p:inputTextarea value="#{userWizard.questao.texto}"
 										label="Texto" rows="6" cols="40" />
-	
+
 									<h:outputText value="Enunciado: " />
 									<p:inputTextarea value="#{userWizard.questao.enunciado}"
 										label="Enunciado" rows="6" cols="40" />
-	
+
 								</h:panelGrid>
 							</p:panel>
 						</p:tab>
-	
+
 						<p:tab id="alternativas" title="Alternativas">
 							<p:panel header="Detalhes Alternativas">
 								<p:messages />
-	
+
 								<h:panelGrid columns="2" columnClasses="label, value">
 									
-									<p:dataList value = "#{userWizard.questao.opcoes}" var = "opcao" type = "definition">
+									<p:dataTable value="#{userWizard.questao.opcoes}" var="opcao">
 									
-										<h:outputText value="Alternativa: " />
-										<h:outputText value="Gabarito: " />
-		
-										<p:inputTextarea value="#{opcao.texto}"
-											rows="3" cols="40" />
-										<h:selectBooleanCheckbox
-											value="#{opcao.gabarito}" />
-		
-									</p:dataList>
-	
+									<p:column headerText="Alternativa:">
+        								<p:inputTextarea value="#{opcao.texto}" rows="3" cols="40" />
+    								</p:column>
+    								
+    								<p:column headerText="Gabarito:">
+        								<h:selectBooleanCheckbox value="#{opcao.gabarito}" />
+    								</p:column>
+
+									</p:dataTable>
+
 								</h:panelGrid>
 							</p:panel>
 						</p:tab>
-	
+
 						<p:tab id="confirm" title="Confirmação">
 							<p:panel header="Confirmation">
 								<h:panelGrid id="confirmation" columns="1">
@@ -92,62 +89,55 @@
 										<h:outputText value="Ano: " />
 										<h:outputText value="#{userWizard.questao.ano}"
 											styleClass="outputLabel" />
-	
+
 										<h:outputText value="Matéria: " />
 										<h:outputText value="#{userWizard.questao.materia}"
 											styleClass="outputLabel" />
-	
+
 										<h:outputText value="Título: " />
 										<h:outputText value="#{userWizard.questao.titulo}"
 											styleClass="outputLabel" />
-	
+
 										<h:outputText value="Texto " />
 										<h:outputText value="#{userWizard.questao.texto}"
 											styleClass="outputLabel" />
-	
+
 										<h:outputText value="Enunciado: " />
 										<h:outputText value="#{userWizard.questao.enunciado}"
 											styleClass="outputLabel" />
 									</h:panelGrid>
-	
+
 									<h:panelGrid columns="3" columnClasses="label, value, value">
-										<p:dataList value = "#{userWizard.questao.opcoes}" var = "opcao" type = "definition">
+										<p:dataList value="#{userWizard.questao.opcoes}" var="opcao"
+											type="definition">
 											<h:outputText value="Alternativa " />
-											<h:outputText value="#{opcao.texto}"
-												styleClass="outputLabel" />
+											<h:outputText value="#{opcao.texto}" styleClass="outputLabel" />
 											<h:outputText value="#{opcao.gabarito}"
 												styleClass="outputLabel" />
 										</p:dataList>
 									</h:panelGrid>
 								</h:panelGrid>
-	
+
 								<p:commandButton value="Submit"
 									actionListener="#{userWizard.save}" update="growl"
 									process="@this" />
 							</p:panel>
 						</p:tab>
 					</p:wizard>
-					</h:panelGrid>
-				</h:form>
-				
+				</h:panelGrid>
+			</h:form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			<!--
+			<p:outputLabel for="materia" value="Matéria" />
+									<p:selectOneMenu id="materia" value="#{userWizard.questao.materia}"
+										style="width:150px" required="true" label="Matéria">
+										<f:selectItem itemLabel="Selecione" itemValue=""
+											noSelectionOption="true" />
+										<f:selectItems value="#{simuladoBean.materias}" var="m"
+											itemLabel="#{m.descricao}" itemValue="#{m.id}" />
+									</p:selectOneMenu>
+									<p:message for="materia" /
+			  -->
 
 
 		</ui:define>

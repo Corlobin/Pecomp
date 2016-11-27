@@ -16,6 +16,10 @@ public class Video extends AbstractEntity {
 	@Column(name="TB_VID_URL")
 	private String URLVideo;
 	
+	
+	public Video(){
+		super();
+	}
 
 	public Video(String titulo, String uRLVideo) {
 		super();

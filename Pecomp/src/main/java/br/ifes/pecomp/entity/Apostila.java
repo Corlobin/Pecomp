@@ -18,6 +18,10 @@ public class Apostila extends AbstractEntity {
 	
 	@Column(name="TB_APS_URL")
 	private String URLApostila;
+	
+	public Apostila(){
+		super();
+	}
 
 	public Apostila(String imagem, String titulo, String uRLLivro) {
 		super();

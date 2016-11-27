@@ -121,8 +121,20 @@ public class MenuBean extends AbstractBean implements Serializable {
 
         menuAdministrador.addElement(item);
         
-        item = new DefaultMenuItem("Adicionar Conteúdo");
-        item.setUrl("adicionar_conteudo.jsf");
+        item = new DefaultMenuItem("Adicionar Livro");
+        item.setUrl("adicionar_livro.jsf");
+        item.setIcon("fa fa-cog");
+        
+        menuAdministrador.addElement(item);
+        
+        item = new DefaultMenuItem("Adicionar Apostila");
+        item.setUrl("adicionar_apostila.jsf");
+        item.setIcon("fa fa-cog");
+        
+        menuAdministrador.addElement(item);
+        
+        item = new DefaultMenuItem("Adicionar Vídeo");
+        item.setUrl("adicionar_video.jsf");
         item.setIcon("fa fa-cog");
         
         menuAdministrador.addElement(item);

@@ -1,12 +1,12 @@
 package br.ifes.pecomp.bean;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,22 +18,24 @@ import br.ifes.pecomp.entity.Questao;
 import br.ifes.pecomp.entity.QuestaoOpcao;
 import br.ifes.pecomp.repository.MateriaRepositoryImpl;
 import br.ifes.pecomp.repository.PessoaRepositoryImpl;
+import br.ifes.pecomp.repository.QuestaoRepositoryImpl;
 
 @ManagedBean(name="userWizard")
+@ViewScoped
 public class UserWizard extends AbstractBean implements Serializable {
  
 	private static final long serialVersionUID = 1L;
-	
 	private Questao questao = new Questao();
 	private List<Materia> listMaterias;
+	private Materia materia;
 	
 	@PersistenceContext
 	private EntityManager entity;
 	
 	@Inject
 	private transient PessoaRepositoryImpl pessoaRepository;
-	
 	private MateriaRepositoryImpl materiaRepository;
+	private QuestaoRepositoryImpl questaoRepository;
     
 	public UserWizard()
 	{
@@ -44,23 +46,34 @@ public class UserWizard extends AbstractBean implements Serializable {
 		questao.getOpcoes().add(new QuestaoOpcao(""));
 		questao.getOpcoes().add(new QuestaoOpcao(""));
 		questao.getOpcoes().add(new QuestaoOpcao(""));
-		/*
-		if( pessoaRepository != null) {
-			pessoaRepository.testar();
-		}
-		else {
-			System.out.println("nulo ..");
-		}
-		*/
 	}
 	
 	@PostConstruct
     public void init() {
 		materiaRepository = new MateriaRepositoryImpl();
 		listMaterias = materiaRepository.getAll();
+		questaoRepository = new QuestaoRepositoryImpl();
+		materia = new Materia();
 	}
+	
      
-    public Questao getQuestao() {
+    public List<Materia> getListMaterias() {
+		return listMaterias;
+	}
+
+	public void setListMaterias(List<Materia> listMaterias) {
+		this.listMaterias = listMaterias;
+	}
+
+	public Materia getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
+
+	public Questao getQuestao() {
 		return questao;
 	}
 
@@ -68,9 +81,16 @@ public class UserWizard extends AbstractBean implements Serializable {
 		this.questao = questao;
 	}
 
-    public void save() {        
-        FacesMessage msg = new FacesMessage("Successful", "Welcome!");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+    public String save() { 
+    	
+    	materia = materiaRepository.getByDescricao(materia.getDescricao());
+    	questao.setMateria(materia);
+    	questaoRepository.inserir(questao);
+    	
+        this.sucess("Questão cadastrada com sucesso!");
+        
+        return "";
+
     }
      
      

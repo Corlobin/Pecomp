@@ -18,7 +18,7 @@
 				<h1 style="margin-top: 50;">Adicionar questão</h1>
 				<p:separator />
 				<p:spacer height="20" />
-			
+
 				<h:panelGrid style="width:700px">
 					<p:growl id="growl" sticky="true" showDetail="true" />
 
@@ -29,7 +29,7 @@
 								<h:panelGrid columns="2" columnClasses="label, value">
 
 									<h:outputText value="Ano: " />
-									<p:selectOneMenu id="ano" value="#{userWizard.questao.ano}"
+									<p:selectOneMenu id="ano" value="#{userWizard.questao.ano}" required="true" label="Ano"
 										style="width:150px">
 										<f:selectItem itemLabel="Selecione" itemValue=""
 											noSelectionOption="true" />
@@ -39,18 +39,22 @@
 										<f:selectItem itemLabel="2013" itemValue="2013" />
 									</p:selectOneMenu>
 
-									<h:outputText value="Colocar matéria aqui!!!" />
-									<h:outputText value="Colocar matéria aqui!!!" />
-
-									
+									<p:outputLabel for="materia" value="Matéria" />
+									<p:selectOneMenu id="materia" value="#{userWizard.materia.descricao}"
+										style="width:200px" required="true" label="Matéria">
+										<f:selectItem itemLabel="Selecione" itemValue=""
+											noSelectionOption="true" />
+										<f:selectItems value="#{userWizard.listMaterias}" var="m"
+											itemLabel="#{m.descricao}" itemValue="#{m.descricao}" />
+									</p:selectOneMenu>
 
 									<h:outputText value="Título: " />
-									<p:inputTextarea value="#{userWizard.questao.titulo}"
+									<p:inputTextarea value="#{userWizard.questao.titulo}" required="true"
 										label="Titulo" rows="6" cols="50" />
 
 									<h:outputText value="Texto: " />
 									<p:inputTextarea value="#{userWizard.questao.texto}"
-										label="Texto" rows="6" cols="40" />
+										label="Texto" rows="6" cols="40"/>
 
 									<h:outputText value="Enunciado: " />
 									<p:inputTextarea value="#{userWizard.questao.enunciado}"
@@ -65,16 +69,16 @@
 								<p:messages />
 
 								<h:panelGrid columns="2" columnClasses="label, value">
-									
+
 									<p:dataTable value="#{userWizard.questao.opcoes}" var="opcao">
-									
-									<p:column headerText="Alternativa:">
-        								<p:inputTextarea value="#{opcao.texto}" rows="3" cols="40" />
-    								</p:column>
-    								
-    								<p:column headerText="Gabarito:">
-        								<h:selectBooleanCheckbox value="#{opcao.gabarito}" />
-    								</p:column>
+
+										<p:column headerText="Alternativa:">
+											<p:inputTextarea value="#{opcao.texto}" rows="3" cols="40" />
+										</p:column>
+
+										<p:column headerText="Gabarito:" style="text-align: center;">
+											<h:selectBooleanCheckbox value="#{opcao.gabarito}" />
+										</p:column>
 
 									</p:dataTable>
 
@@ -90,9 +94,10 @@
 										<h:outputText value="#{userWizard.questao.ano}"
 											styleClass="outputLabel" />
 
-										<h:outputText value="Matéria: " />
-										<h:outputText value="#{userWizard.questao.materia}"
+										<h:outputText value="Materia: " />
+										<h:outputText value="#{userWizard.materia.descricao}"
 											styleClass="outputLabel" />
+
 
 										<h:outputText value="Título: " />
 										<h:outputText value="#{userWizard.questao.titulo}"

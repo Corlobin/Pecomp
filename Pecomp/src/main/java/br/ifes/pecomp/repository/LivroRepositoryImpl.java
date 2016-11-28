@@ -22,12 +22,12 @@ public class LivroRepositoryImpl extends AbstractRepository implements Serializa
 	}
 	
 	public List<Livro> findAll() {
-        /*
-		TypedQuery<Livro> query = getSession().createQuery("select obj from Livro obj", Livro.class);
+        
+		TypedQuery<Livro> query = getSession().createQuery("select obj from TB_LIVRO obj", Livro.class);
 		List<Livro> livros = query.getResultList();
 		return livros;
-		*/
-		
+	
+		/*
 		List<Livro> lista = new ArrayList<Livro>();
 		
         lista.add( new Livro("livro1.gif", "Computa��o Forense", "http://google.com.br"));
@@ -36,6 +36,7 @@ public class LivroRepositoryImpl extends AbstractRepository implements Serializa
         lista.add( new Livro("livro4.jpg", "Fundamentos de Ci�ncia da Computa��o", "http://google.com.br"));
                  
         return lista;
+        */
     }
 
 

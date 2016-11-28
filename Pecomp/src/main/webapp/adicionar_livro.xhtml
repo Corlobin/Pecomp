@@ -26,7 +26,7 @@
 					<h:panelGrid columns="3">
 					
 						<p:outputLabel for="imagem" value="Imagem: " />
-						<p:fileUpload id="imagem" fileUploadListener="#{adicionaLivroBean.upload}" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+						<p:fileUpload id="imagem" fileUploadListener="#{adicionaLivroBean.upload}" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
 						<p:message for="imagem" />
 						
 						<p:outputLabel for="titulo" value="Título:" />

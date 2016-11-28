@@ -69,3 +69,12 @@ body {
 	background-image: none;
 	background-color:#000080!important; /*azul escuro*/
 }
+
+/* Tooltip que mostra informações sobre as datas*/
+
+#imgPanel { visibility: hidden; width: 280px; background-color: #B22222; color: #fff; text-align: center; padding: 5px 0; border-radius: 6px; 
+top: -5px; right: 103%; line-height: 150%; position: absolute; z-index: 1;}
+
+#imgCalendar{ position: relative; display: inline-block; position: fixed; right: 3%; bottom: 7%; z-index: 30; width: 66px; height: 65px; }
+
+/*Fim do tooltip*/

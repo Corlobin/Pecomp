@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="templates/template_page.xhtml">
+		<ui:define name="titulo_menu"> 
+				Página para adicionar conteúdos
+		</ui:define>
+
+		<ui:define name="content">
+
+			<h1 style="margin-top: 50;">Adicionar conteúdos</h1>
+			<p:separator />
+
+			 <p:outputPanel deferred="true" style="width:300px;margin-bottom:10px;">
+				<h:form id="formAdiciocarConteudo">
+				
+					<p:spacer height="30" />
+				
+					<p:commandButton value="Cadastrar livro" action="adicionar_livro.jsf"
+						icon="fa fa-book" style="height:40px;"/>
+						
+						<p:spacer height="30" />
+						
+					<p:commandButton  value="Cadastrar apostila" action="adicionar_apostila.jsf"
+						icon="fa fa-file-text-o" style="height:40px;"/>
+						
+						<p:spacer height="30" />
+						
+					<p:commandButton value="Cadastrar vídeo" action="adicionar_video.jsf"
+						icon="fa fa-film" style="height:40px;"/>
+
+				</h:form>
+			</p:outputPanel>
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

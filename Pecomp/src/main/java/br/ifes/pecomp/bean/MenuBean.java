@@ -43,12 +43,6 @@ public class MenuBean extends AbstractBean implements Serializable {
         item.setUrl("perfil.jsf");
         menuInicio.addElement(item);
         
-        item = new DefaultMenuItem("Cadastro - Provisório");
-        item.setIcon("fa fa-user");
-        item.setUrl("cadastro.jsf");
-        menuInicio.addElement(item);
-         
-        
         //Second submenu
         DefaultSubMenu menuSimulado = new DefaultSubMenu("Simulados");
  
@@ -121,20 +115,8 @@ public class MenuBean extends AbstractBean implements Serializable {
 
         menuAdministrador.addElement(item);
         
-        item = new DefaultMenuItem("Adicionar Livro");
-        item.setUrl("adicionar_livro.jsf");
-        item.setIcon("fa fa-cog");
-        
-        menuAdministrador.addElement(item);
-        
-        item = new DefaultMenuItem("Adicionar Apostila");
-        item.setUrl("adicionar_apostila.jsf");
-        item.setIcon("fa fa-cog");
-        
-        menuAdministrador.addElement(item);
-        
-        item = new DefaultMenuItem("Adicionar Vídeo");
-        item.setUrl("adicionar_video.jsf");
+        item = new DefaultMenuItem("Adicionar Conteúdos");
+        item.setUrl("adicionar_conteudo.jsf");
         item.setIcon("fa fa-cog");
         
         menuAdministrador.addElement(item);

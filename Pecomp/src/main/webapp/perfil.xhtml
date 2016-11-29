@@ -17,7 +17,7 @@
 		
 			<h1 style="margin-top:50; ">Meu perfil</h1>
 			<p:separator />
-		
+			<p:messages/>
 			<h:form id="formPerfil">
 
 				<h:panelGrid columns="2">
@@ -26,27 +26,24 @@
 
 						<f:facet name="header">
 							<!-- TODO colocar imagem de forma dinamica -->
-							<p:graphicImage library="TemaPadrao" name="images/aluno5.png" />
+							<img src ="images/#{perfilBean.userImage}.jpeg" />
 						</f:facet>
 
 						<p:commandButton id="modalDialogButton" value="Tirar foto" onclick="PF('dlg2').show();" type="button"/>  
 
 						
-						<!--
 						<h:form>  
 							<p:dialog id="modalDialog" header="Modal Dialog" widgetVar="dlg2" modal="false" >
 				                <h:form enctype="multipart/form-data">
 				                    <p:outputPanel id="outputPanelStudentUpload">
 				
 				                        <p:layout style="min-width:800px;min-height:300px;" >  
-				                            <p:layoutUnit header="Original Picture" position="west"  size="400" resizable="true">  
+				                            <p:layoutUnit header="Foto Original" position="west"  size="400" resizable="true">  
 				                                <p:photoCam widgetVar="pc" listener="#{perfilBean.oncapture}" update="photos" />
 				                            </p:layoutUnit>  
-				                            <p:layoutUnit header="Preview Image"  position="center" >  
+				                            <p:layoutUnit header="Foto Tirada"  position="center" >  
 				                                <p:imageSwitch effect="zoom" id="photos">
-				                                    <ui:repeat value="#{perfilBean.photos}" var="photo">
-				                                        <p:graphicImage value="/unprotected/#{photo}.png" />
-				                                    </ui:repeat>
+				                                    
 				                                </p:imageSwitch>
 				                            </p:layoutUnit>  
 				                        </p:layout> 
@@ -55,7 +52,7 @@
 				                </h:form>
 				            </p:dialog>
 			            </h:form> 	
-			            -->			        
+			            	        
 				        
 						
 
@@ -66,21 +63,19 @@
 					<h:panelGrid columns="3">
 
 						<p:outputLabel for="nome" value="Nome" />
-						<h:inputText id="nome" value="#{perfilBean.pessoa.nome}" required="true" label="Nome" rendered="#{ perfilBean.edita}" />
-						<h:outputText value="#{perfilBean.pessoa.nome}" rendered="#{not perfilBean.edita}" />
+						<h:inputText id="nome" value="#{loginBean.usuario.nome}" required="true" label="Nome" />
 						<p:message for="nome"/>
 
 						<p:outputLabel for="email" value="Email" />
-						<h:inputText id="email" value="#{perfilBean.pessoa.email}" required="true" label="Email" rendered="#{ perfilBean.edita}" />
-						<h:outputText value="#{perfilBean.pessoa.email}" rendered="#{not perfilBean.edita}" />
+						<h:inputText id="email" value="#{loginBean.usuario.email}" required="true" label="Email" />
 						<p:message for="email"/>
 
 
 						<p:outputLabel for="dataNascimento" value="Data de Nascimento " />
-						<p:calendar id="dataNascimento" value="#{perfilBean.pessoa.dataNascimento}" pattern="dd-MM-yyyy" mask="true" required="true" rendered="#{ perfilBean.edita}"/>
-						<h:outputText value="#{perfilBean.pessoa.dataNascimento}" required="true" label="Data de nascimento" rendered="#{not perfilBean.edita}" />						
+						<p:calendar id="dataNascimento" value="#{loginBean.usuario.dataNascimento}" pattern="dd-MM-yyyy" mask="true" required="true" />
 						<p:message for="dataNascimento"/>
 
+						<p:commandButton id="submitButton" value="Salvar atualizações" action="#{perfilBean.save}" icon="ui-icon-check" />
 
 
 					</h:panelGrid>
@@ -89,9 +84,6 @@
 				<p:spacer height="20" />
 
 				<h:panelGrid columns="2">
-					<p:commandButton value="Atualizar perfil" actionListener="#{perfilBean.solicitarAtualizacao}" rendered="#{not perfilBean.edita}" />
-					<p:commandButton id="submitButton" value="Salvar atualizações" update="@parent" actionListener="#{perfilBean.save}"
-						icon="ui-icon-check" rendered="#{perfilBean.edita}"/>
 
 				</h:panelGrid>
 				<p:spacer height="25" />

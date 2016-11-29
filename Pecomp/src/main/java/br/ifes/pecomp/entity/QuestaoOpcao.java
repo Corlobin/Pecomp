@@ -23,7 +23,9 @@ public class QuestaoOpcao extends AbstractEntity implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Questao questao;
 	
-	
+	public QuestaoOpcao() {
+		// TODO Auto-generated constructor stub
+	}
 	public QuestaoOpcao(String string) {
 		this.texto = string;
 		// TODO Auto-generated constructor stub

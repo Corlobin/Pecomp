@@ -45,6 +45,7 @@ public class SimuladoBean extends AbstractBean implements Serializable  {
     	perguntas = new ArrayList<String>();
     	
 		questoes = questaoRepository.getAll();
+
     	anos = questaoRepository.getAllYears();
     	
     	quantidadeQuestoesAleatorias = 0;

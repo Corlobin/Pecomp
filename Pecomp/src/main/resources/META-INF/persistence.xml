@@ -16,7 +16,6 @@
 		<class>br.ifes.pecomp.entity.Poscomp</class>
 		<class>br.ifes.pecomp.entity.QuestaoOpcao</class>
 		<class>br.ifes.pecomp.entity.Questao</class>
-		<class>br.ifes.pecomp.entity.User</class>
 		<class>br.ifes.pecomp.entity.Video</class>
 	
 		<properties>
@@ -36,7 +35,7 @@
 			<!-- update: update the schema. -->
 			<!-- create: creates the schema, destroying previous data. -->
 			<!-- create-drop: drop the schema at the end of the session -->
-			<property name="hibernate.hbm2ddl.auto" value="validate" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			
 
 		</properties>

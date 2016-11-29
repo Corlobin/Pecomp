@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.persistence.TypedQuery;
 
+import br.ifes.pecomp.entity.Pessoa;
 import br.ifes.pecomp.entity.Questao;
 
 public class QuestaoRepositoryImpl extends AbstractRepository implements Serializable {
@@ -29,14 +31,9 @@ public class QuestaoRepositoryImpl extends AbstractRepository implements Seriali
 		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Integer> getAllYears(){
-		ArrayList<Integer> lista = new ArrayList<Integer>();
-		lista.add(2010);
-		lista.add(2011);
-		lista.add(2012);
-		lista.add(2013);
-		lista.add(2014);
-		lista.add(2015);
+		List<Integer> lista = this.getEntityManager().createQuery("select obj.ano from Questao obj group by obj.ano").getResultList();		
 		return lista;
 	}
 

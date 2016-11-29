@@ -22,6 +22,7 @@ public class PessoaRepositoryImpl extends AbstractRepository implements Serializ
 	@Inject
 	public PessoaRepositoryImpl() {
 		super();
+
 	}
 	
 	public List<Pessoa> findAll()

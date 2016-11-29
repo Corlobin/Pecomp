@@ -1,91 +1,59 @@
 package br.ifes.pecomp.bean;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.annotation.ManagedBean;
-import javax.annotation.PostConstruct;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.ExternalContext;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
 import javax.imageio.stream.FileImageOutputStream;
+import javax.servlet.ServletContext;
 
 import org.primefaces.event.CaptureEvent;
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
 import br.ifes.pecomp.entity.Curso;
 import br.ifes.pecomp.entity.Instituicao;
 import br.ifes.pecomp.entity.Pessoa;
-import br.ifes.pecomp.repository.CursoRepositoryImpl;
-import br.ifes.pecomp.repository.InstituicaoRepositoryImpl;
-import br.ifes.pecomp.repository.PessoaRepositoryImpl;
 
+@ManagedBean(name = "perfilBean")
+@RequestScoped
+public class PerfilBean extends AbstractBean implements Serializable {
 
-@ManagedBean(value="perfilBean")
-@ViewScoped
-public class PerfilBean implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 1L;
-    
-    public UploadedFile arquivo;
-    
-    public StreamedContent foto = null;
-    
+	public UploadedFile arquivo;
+
+	public StreamedContent foto = null;
+
 	private Pessoa pessoa;
-	
+
 	private Instituicao instituicao;
-	
-	private InstituicaoRepositoryImpl instituicoesRepository;
-	
-	private List<Instituicao> listInstituicao;
-	
+
 	private Curso curso;
-	
+
 	private List<Curso> listCurso;
-	
-	private CursoRepositoryImpl cursosRepository;
-	
-	private PessoaRepositoryImpl pessoaRepository;
-	
-   private String filename;
-   
-   private boolean edita;
-	   	
-	@PostConstruct
-    public void init() {
-		instituicoesRepository = new InstituicaoRepositoryImpl();
-		listInstituicao = instituicoesRepository.getAll();
-		
-		cursosRepository = new CursoRepositoryImpl();
-		listCurso = cursosRepository.getAll(); 
-		
-		pessoaRepository = new PessoaRepositoryImpl();
-		pessoa = new Pessoa();
-		instituicao = new Instituicao();
-		curso = new Curso();
-	}
-	
 
-	public boolean isEdita() {
-		return edita;
-	}
+	private String filename;
 
-	public void setEdita(boolean edita) {
-		this.edita = edita;
-	}
+	private LoginBean loginBean;
 
-	public List<Instituicao> getListInstituicao() {
-		return listInstituicao;
-	}
+	public PerfilBean() {
+		filename = "";
 
-	public void setListInstituicao(List<Instituicao> listInstituicao) {
-		this.listInstituicao = listInstituicao;
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		loginBean = (LoginBean) facesContext.getApplication().getVariableResolver().resolveVariable(facesContext,
+				"loginBean");
+
 	}
 
 	public List<Curso> getListCurso() {
@@ -104,7 +72,6 @@ public class PerfilBean implements Serializable {
 		this.curso = curso;
 	}
 
-
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -112,7 +79,7 @@ public class PerfilBean implements Serializable {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-	
+
 	public Instituicao getInstituicao() {
 		return instituicao;
 	}
@@ -120,94 +87,106 @@ public class PerfilBean implements Serializable {
 	public void setInstituicao(Instituicao instituicao) {
 		this.instituicao = instituicao;
 	}
-	
-	public List<Instituicao> getInstituicoes() {
-		return instituicoesRepository.getAll();
+
+	public void save() {
+		this.sucess("Dados atualizados com sucesso!");
+		loginBean.salvarUsuario();
+
 	}
-	
-	public List<Curso> getCursos() {
-		return cursosRepository.getAll();
-	}
-	
-    public void save() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "User Saved"));
-        instituicao = null;
-        curso = null;
-        pessoa.setNome(null);
-        pessoa.setEmail(null);
-        pessoa.setDataNascimento(null);
-        pessoa.setSenha(null);
-        
-    }
-    
-	public String solicitarAtualizacao(){
-		setEdita(true);
+
+	public String solicitarAtualizacao() {
 		return "";
 	}
 
+	public void handleFileUpload(FileUploadEvent event) {
+		FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
 
-    public void handleFileUpload(FileUploadEvent event) {
-        FacesMessage message = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
-    
-    public UploadedFile getArquivo() {
-        return arquivo;
-    }
+	public UploadedFile getArquivo() {
+		return arquivo;
+	}
 
-    public void setArquivo(UploadedFile arquivo) {
-        this.arquivo = arquivo;
-    }
+	public void setArquivo(UploadedFile arquivo) {
+		this.arquivo = arquivo;
+	}
 
-    public StreamedContent getFoto() {
-        return this.foto;
-    }
+	public StreamedContent getFoto() {
+		return this.foto;
+	}
 
-    public void setFoto(StreamedContent foto) {
-        this.foto = foto;
-    }
+	public void setFoto(StreamedContent foto) {
+		this.foto = foto;
+	}
 
-    
-    private String getRandomImageName() {
-        int i = (int) (Math.random() * 10000000);
-         
-        return String.valueOf(i);
-    }
- 
-    public String getFilename() {
-        return filename;
-    }
-    
-    public void oncapture(CaptureEvent captureEvent) {
-        filename = getRandomImageName();
-        byte[] data = captureEvent.getData();
- 
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-        String newFileName = externalContext.getRealPath("") + File.separator + "resources" + File.separator + "demo" +
-                                    File.separator + "images" + File.separator + "photocam" + File.separator + filename + ".jpeg";
-         
-        FileImageOutputStream imageOutput;
-        try {
-            imageOutput = new FileImageOutputStream(new File(newFileName));
-            imageOutput.write(data, 0, data.length);
-            imageOutput.close();
-        }
-        catch(IOException e) {
-            throw new FacesException("Error in writing captured image.", e);
-        }
-    }
-	
-	/*
-	public String salvarRegistro(){
-		for(Usuario usu: lista){
-			if(usu.getEdita()){
-				UsuarioCrudJDBC objUsuarioCrudJDBC = new UsuarioCrudJDBC();
-				objUsuarioCrudJDBC.alterar(usu);
-			}
-			usu.setEdita(false);
+	private String getRandomImageName() {
+		int i = (int) (Math.random() * 10000000);
+
+		return String.valueOf(i);
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void oncapture(CaptureEvent captureEvent) {
+		filename = getRandomImageName();
+		byte[] data = captureEvent.getData();
+
+		String file2Name = "C:\\resources\\fotos\\"+filename+".jpeg";
+		
+		loginBean.getUsuario().setImageName(filename);
+		loginBean.salvarUsuario();
+		
+		FileImageOutputStream imageOutput;
+		try {
+			imageOutput = new FileImageOutputStream(new File(file2Name));
+			imageOutput.write(data, 0, data.length);
+			imageOutput.close();
+
+			
+
+		} catch (Exception e) {
+			throw new FacesException("Error in writing captured image.");
 		}
-		lista = objUsuarioCrudJDBC.listar();
-		return null;
-	}*/
+				
+	}
+
+	public StreamedContent getImage() throws IOException {
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		// So, browser is requesting the image. Return a real StreamedContent
+		// with the image bytes.
+		FacesContext aFacesContext = FacesContext.getCurrentInstance();
+		ServletContext contexta = (ServletContext) aFacesContext.getExternalContext().getContext();
+		String realPath = contexta.getRealPath("/resources/FotosEnviadas/");
+		
+		
+		String newFileName = realPath + filename;
+		String filename = this.getUserImage();
+		File file = new File("C:\\resources\\fotos\\", filename);
+		FileInputStream fst = new FileInputStream(file);
+
+		return new DefaultStreamedContent(fst, "image/png");
+
+	}
+
+	public String getUserImage() {
+		String imagem = this.loginBean.getUsuario().getImageName();
+		if (imagem == null) {
+			return "aluno5.png";
+		} else {
+			return imagem;
+		}
+
+	}
+
+	/*
+	 * public String salvarRegistro(){ for(Usuario usu: lista){
+	 * if(usu.getEdita()){ UsuarioCrudJDBC objUsuarioCrudJDBC = new
+	 * UsuarioCrudJDBC(); objUsuarioCrudJDBC.alterar(usu); }
+	 * usu.setEdita(false); } lista = objUsuarioCrudJDBC.listar(); return null;
+	 * }
+	 */
 
 }

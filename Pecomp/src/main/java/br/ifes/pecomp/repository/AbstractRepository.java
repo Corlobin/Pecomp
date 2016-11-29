@@ -13,15 +13,19 @@ import org.hibernate.Transaction;
 import br.ifes.pecomp.entity.Pessoa;
 
 
-public class AbstractRepository 
+public class AbstractRepository implements Serializable
 {
-	//private static SessionFactory sessionFactory = buildSessionFactory();
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8500709169970777519L;
+
 	private static EntityManager entityManager;
-	private static EntityManagerFactory factory;
+	private static final EntityManagerFactory factory = Persistence.createEntityManagerFactory("Pecomp");
+	
 	public AbstractRepository() {
-		if( AbstractRepository.factory == null)
-			AbstractRepository.factory = Persistence.createEntityManagerFactory("Pecomp");
 		if( AbstractRepository.entityManager == null)
 			AbstractRepository.entityManager = factory.createEntityManager();
 	}
@@ -44,6 +48,14 @@ public class AbstractRepository
 
 	public <T> T merge(T entidade) {
 		return entityManager.merge(entidade);
+	}
+
+	public <T> void update(T entidade)
+	{
+		Session session = getSession();
+		Transaction tx = session.beginTransaction();
+		session.update(entidade);
+		tx.commit();
 	}
 
 	public <T> void remove(T entidade) {
@@ -72,21 +84,6 @@ public class AbstractRepository
 		t.commit();
 	}
 	
-	/*
-	private static SessionFactory buildSessionFactory()
-	{
-		return null;
-	}
-	
-	public static SessionFactory getSessionFactory()
-	{
-		return sessionFactory;
-	}
-	public static void close()
-	{
-		getSessionFactory().close();
-	}
-	*/
 	
 
 }

@@ -13,7 +13,7 @@ import br.ifes.pecomp.repository.PoscompRepositoryImpl;
 
 @ManagedBean(name="dataPoscompBean")
 @ViewScoped
-public class DataPoscompBean implements Serializable{
+public class DataPoscompBean extends AbstractBean  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	

@@ -19,7 +19,7 @@
 	<h:body>
 		
 		<div align="center" class = "ui-fluid">
-			<p:layout fullPage="true" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+			<p:layout fullPage="true" columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank" rendered="#{loginBean.usuario ne null}">
 				
 				<div class="header">
 					<ui:insert name="north">

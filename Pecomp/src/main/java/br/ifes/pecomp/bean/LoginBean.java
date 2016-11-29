@@ -1,9 +1,10 @@
 package br.ifes.pecomp.bean;
 
 import java.io.Serializable;
+import br.ifes.pecomp.session.*;
 
-import javax.ejb.SessionContext;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import br.ifes.pecomp.entity.Pessoa;
@@ -14,6 +15,9 @@ import br.ifes.pecomp.repository.PessoaRepositoryImpl;
 public class LoginBean extends AbstractBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	@ManagedProperty(value = "#{usuario}")
+	private Pessoa usuario;
 	
 	private String email;
 	
@@ -53,11 +57,40 @@ public class LoginBean extends AbstractBean implements Serializable {
 		}
 		else
 		{
-			//this.sucess("Logado com sucesso!");
-			//SessionContext.getInstance().setAttribute("usuarioLogado", pessoa);
+			usuario = pessoa;
+
+
 			return "noticias.jsf";
 		}
 	}
+	
+	public String doLogout()
+	{
+
+		this.sucess("Deslogado com sucesso");
+		return "index.jsf";
+	}
+	
+	public boolean isLogged()
+	{
+		
+		return true;
+	}
+	
+	public Pessoa getUsuario() {
+		return usuario;
+	}
+	
+	public void setUsuario(Pessoa usuario) {
+		this.usuario = usuario;
+	}
+	
+	
+	public void salvarUsuario()
+	{
+		this.pessoaRepository.update(usuario);
+	}
+	
 	
     /**
      * Retorna usuario logado

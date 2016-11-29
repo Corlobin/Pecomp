@@ -19,12 +19,11 @@ public class CursoRepositoryImpl extends AbstractRepository implements Serializa
 	@Inject
 	public CursoRepositoryImpl() {
 		super();
-		/*
-		Curso curso = new Curso();
-		curso.setId((long) 1);
-		curso.setNome("Sistemas de Informação");
-		inserir(curso);
-		*/
+//		Curso curso = new Curso();
+//		curso.setId((long) 1);
+//		curso.setNome("Sistemas de Informação");
+//		inserir(curso);
+
 	}
 	
 	public List<Curso> getAll() {

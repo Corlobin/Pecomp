@@ -1,14 +1,12 @@
 package br.ifes.pecomp.repository;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.TypedQuery;
 
 import br.ifes.pecomp.entity.Instituicao;
-import br.ifes.pecomp.entity.Pessoa;
 
 public class InstituicaoRepositoryImpl extends AbstractRepository implements Serializable {
 
@@ -17,6 +15,11 @@ public class InstituicaoRepositoryImpl extends AbstractRepository implements Ser
 	@Inject
 	public InstituicaoRepositoryImpl() {
 		super();
+//		Instituicao inst = new Instituicao();
+//		inst.setId((long) 1);
+//		inst.setNome("IFES");
+//		inserir(inst);
+
 	}
 	
 	public Instituicao findByNome(String nome)

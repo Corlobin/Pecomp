@@ -8,9 +8,16 @@ INSERT INTO TB_INSTITUICAO (TB_INS_NOME) VALUES ('UVV');
 
 INSERT INTO TB_PESSOA (TB_PES_NOME, TB_PES_EMAIL, TB_PES_SENHA, TB_PES_IMG_NAME) VALUES ('Ricardo', 'anribrasil@gmail.com', '123', '1289486.jpeg');
 
+INSERT INTO tb_livro(tb_lvr_url, tb_lvr_imagem, tb_lvr_titulo) VALUES ('http://google.com.br', 'livro1.gif','Computação Forense');
+
 INSERT INTO TB_MATERIA (TB_MAT_DESCRICAO) VALUES ('Matematica');
 INSERT INTO TB_MATERIA (TB_MAT_DESCRICAO) VALUES ('Fundamentos de Computação');
 INSERT INTO TB_MATERIA (TB_MAT_DESCRICAO) VALUES ('Tecnologia da Computação');
 
 INSERT INTO TB_QUESTOES (TB_QST_ANO) VALUES ('2016');
+
+INSERT INTO tb_dt_poscomp(tb_dt_inscricao, tb_dt_prova) VALUES ('2016-12-22 22:41:15.833', '2017-02-12 22:41:15.833');
+
+
+
 

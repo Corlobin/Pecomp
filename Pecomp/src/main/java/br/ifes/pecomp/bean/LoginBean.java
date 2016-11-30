@@ -49,18 +49,26 @@ public class LoginBean extends AbstractBean implements Serializable {
 	
 	public String verificaAcesso()
 	{
-		Pessoa pessoa = pessoaRepository.findByUsuarioAndSenha(email, senha);
-		if (pessoa == null)
+		if( pessoaRepository != null)
+			
 		{
-			this.error("Usuário ou senha inválidos!");
-			return "";
+			Pessoa pessoa = pessoaRepository.findByUsuarioAndSenha(email, senha);
+			if (pessoa == null)
+			{
+				this.error("Usuário ou senha inválidos!");
+				return "";
+			}
+			else
+			{
+				usuario = pessoa;
+	
+	
+				return "noticias.jsf";
+			}
 		}
-		else
-		{
-			usuario = pessoa;
-
-
-			return "noticias.jsf";
+		else {
+			System.out.println("Excecao: null pessoaRepository");
+			return null;
 		}
 	}
 	

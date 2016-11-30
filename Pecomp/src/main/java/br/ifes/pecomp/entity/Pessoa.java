@@ -1,11 +1,11 @@
 package br.ifes.pecomp.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -47,6 +47,9 @@ public class Pessoa extends AbstractEntity {
 	@Column(name="TB_PES_IMG_NAME")
 	private String imageName;
 	
+	@OneToMany(mappedBy="pessoa")
+	private List<PessoaAcertos> questaoTentadas;
+		
 	//andre bonitao
 	public Pessoa() {
 		super();
@@ -147,6 +150,14 @@ public class Pessoa extends AbstractEntity {
 	
 	public void setInstituicao(Instituicao instituicao) {
 		this.instituicao = instituicao;
+	}
+
+	public List<PessoaAcertos> getQuestaoTentadas() {
+		return questaoTentadas;
+	}
+
+	public void setQuestaoTentadas(List<PessoaAcertos> questaoTentadas) {
+		this.questaoTentadas = questaoTentadas;
 	}
 	
 	

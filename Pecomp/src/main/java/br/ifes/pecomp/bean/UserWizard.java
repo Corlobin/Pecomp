@@ -18,6 +18,7 @@ import br.ifes.pecomp.entity.Questao;
 import br.ifes.pecomp.entity.QuestaoOpcao;
 import br.ifes.pecomp.repository.MateriaRepositoryImpl;
 import br.ifes.pecomp.repository.PessoaRepositoryImpl;
+import br.ifes.pecomp.repository.QuestaoOpcaoRepositoryImpl;
 import br.ifes.pecomp.repository.QuestaoRepositoryImpl;
 
 @ManagedBean(name="userWizard")
@@ -36,6 +37,7 @@ public class UserWizard extends AbstractBean implements Serializable {
 	private transient PessoaRepositoryImpl pessoaRepository;
 	private MateriaRepositoryImpl materiaRepository;
 	private QuestaoRepositoryImpl questaoRepository;
+	private QuestaoOpcaoRepositoryImpl questaoOpcaoRepository;
     
 	public UserWizard()
 	{
@@ -53,6 +55,7 @@ public class UserWizard extends AbstractBean implements Serializable {
 		materiaRepository = new MateriaRepositoryImpl();
 		listMaterias = materiaRepository.getAll();
 		questaoRepository = new QuestaoRepositoryImpl();
+		questaoOpcaoRepository = new QuestaoOpcaoRepositoryImpl();
 		materia = new Materia();
 	}
 	
@@ -86,11 +89,28 @@ public class UserWizard extends AbstractBean implements Serializable {
     	materia = materiaRepository.getByDescricao(materia.getDescricao());
     	questao.setMateria(materia);
     	questaoRepository.inserir(questao);
+
+    	ajustaOpcoes();
+    	
+    	for(QuestaoOpcao o: questao.getOpcoes()){
+    		o.setQuestao(questao);
+    		questaoOpcaoRepository.inserir(o);    	
+    	}
     	
         this.sucess("Questão cadastrada com sucesso!");
         
         return "";
+    }
+    
+    public void ajustaOpcoes(){
+    	Iterator<QuestaoOpcao> it = questao.getOpcoes().iterator();
 
+        while(it.hasNext()){
+            if(it.next().getTexto().equals("")){
+                it.remove();
+            }
+        }
+                
     }
      
      

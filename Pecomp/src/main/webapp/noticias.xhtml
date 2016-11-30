@@ -37,11 +37,11 @@
 				hideEvent="mouseout" showEffect="drop" hideEffect="drop"
 				dismissable="false" showCloseIcon="true">
 				<h:outputText
-					value="Faltam #{dataPoscompBean.quantidadeDiasInscricao} dias para o fim das "
+					value="#{dataPoscompBean.mensagemDataInscricao}"
 					styleClass="outputLabel" />
 				<br />
 				<h:outputText
-					value="Faltam #{dataPoscompBean.quantidadeDiasProva} dias para a prova"
+					value="#{dataPoscompBean.mensagemDataProva}"
 					styleClass="outputLabel" />
 			</p:overlayPanel>
 

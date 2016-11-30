@@ -2,15 +2,14 @@ package br.ifes.pecomp.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -43,6 +42,13 @@ public class Questao extends AbstractEntity {
 	private List<QuestaoOpcao> opcoes;
 	
 	//private List<Comentario> comentarios;
+	
+	@OneToOne
+	private PessoaAcertos tentadas;
+	
+	
+	
+	
 	
 	public List<QuestaoOpcao> getOpcoes() {
 		return opcoes;
@@ -112,6 +118,18 @@ public class Questao extends AbstractEntity {
 	{
 		this.opcoes = new ArrayList<QuestaoOpcao>();
 	}
-		
+
+	public PessoaAcertos getTentadas() {
+		return tentadas;
+	}
+
+	public void setTentadas(PessoaAcertos tentadas) {
+		this.tentadas = tentadas;
+	}
+
+	public void setOpcoes(List<QuestaoOpcao> opcoes) {
+		this.opcoes = opcoes;
+	}
+	
 
 }

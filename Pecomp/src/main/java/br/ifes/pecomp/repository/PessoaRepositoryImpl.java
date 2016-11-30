@@ -41,7 +41,9 @@ public class PessoaRepositoryImpl extends AbstractRepository implements Serializ
 		try{ 
 			pessoa = query.getSingleResult();
 		}
-		catch(Exception ex) { }
+		catch(Exception ex) { 
+			System.out.println( " " + ex.getMessage());
+		}
 		
 		return pessoa;
 	}

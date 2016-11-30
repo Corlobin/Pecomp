@@ -120,6 +120,12 @@ public class MenuBean extends AbstractBean implements Serializable {
         item.setIcon("fa fa-cog");
         
         menuAdministrador.addElement(item);
+        
+        item = new DefaultMenuItem("Adicionar Datas");
+        item.setUrl("adicionar_datas.jsf");
+        item.setIcon("fa fa-cog");
+        
+        menuAdministrador.addElement(item);
 
         model.addElement(menuAdministrador);
     }

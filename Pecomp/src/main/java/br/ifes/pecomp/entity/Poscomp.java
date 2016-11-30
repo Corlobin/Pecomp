@@ -18,6 +18,10 @@ public class Poscomp extends AbstractEntity {
 	
 	@Column(name="TB_DT_INSCRICAO")
 	private Date dataInscricao;
+	
+	public Poscomp(){
+		super();
+	}
 
 	public Date getDataProva() {
 		return dataProva;

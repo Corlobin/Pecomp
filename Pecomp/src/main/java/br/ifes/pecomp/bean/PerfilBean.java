@@ -51,8 +51,7 @@ public class PerfilBean extends AbstractBean implements Serializable {
 		filename = "";
 
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		loginBean = (LoginBean) facesContext.getApplication().getVariableResolver().resolveVariable(facesContext,
-				"loginBean");
+		loginBean = (LoginBean) facesContext.getApplication().getVariableResolver().resolveVariable(facesContext, "loginBean");
 
 	}
 
@@ -174,7 +173,7 @@ public class PerfilBean extends AbstractBean implements Serializable {
 	public String getUserImage() {
 		String imagem = this.loginBean.getUsuario().getImageName();
 		if (imagem == null) {
-			return "aluno5.png";
+			return "aluno5";
 		} else {
 			return imagem;
 		}

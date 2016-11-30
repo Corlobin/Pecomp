@@ -47,7 +47,7 @@ public class Pessoa extends AbstractEntity {
 	@Column(name="TB_PES_IMG_NAME")
 	private String imageName;
 	
-	
+	//andre bonitao
 	public Pessoa() {
 		super();
 	}

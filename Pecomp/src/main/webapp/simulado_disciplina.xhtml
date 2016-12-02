@@ -1,40 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"  
-    xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">  
- 
-    <h:body>  
- 
-		<ui:composition template="templates/template_page.xhtml">          
-			<ui:define name = "titulo_menu"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+	<ui:composition template="templates/template_page.xhtml">
+		<ui:define name="titulo_menu"> 
 				Página Inicial
 			</ui:define>
-	
-			<ui:define name="content">
-				<h:form>
-				    <p:panel id="panel" header="Seleção da prova por disciplina" style="width:400px;margin-bottom:10px;">
-				        <p:messages id="messages" />
-				        <h:panelGrid columns="2" cellpadding="5">
-				            <h:outputLabel for="ano" value="Selecione uma disciplina:" />
-							<p:selectOneMenu id="ano" value="#{simuladoBean.materia}" style="width:150px">
-				                <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
-				                <f:selectItems value="#{simuladoBean.materias}" />
-				            </p:selectOneMenu>
-				    	<p:commandButton value="Iniciar" update="panel"  />
-				        </h:panelGrid>
-				    </p:panel>
-				 
+
+		<ui:define name="content">
+
+			<!-- select para escolher disciplina -->
+			<h:form>
+				<p:panel id="panel" header="Seleção da prova por disciplina"
+					style="width:400px;margin-bottom:10px;">
+					<p:messages id="messages" />
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel for="ano" value="Selecione uma disciplina:" />
+						<p:selectOneMenu id="ano"
+							value="#{simuladoDisciplinaBean.idMateriaSelecionada}"
+							style="width:150px">
+							<f:selectItem itemLabel="Selecione" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItems value="#{simuladoDisciplinaBean.materias}" var="m"
+								itemLabel="#{m.descricao}" itemValue="#{m.id}" />
+						</p:selectOneMenu>
+						<p:commandButton value="Selecionar" id="nonAjax"
+							actionListener="#{simuladoDisciplinaBean.buscarQuestoesDisciplina}"
+							ajax="false" update="panel" />
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+
+
+
+			<!-- questoes apresentadas de acordo com o ano selecionado -->
+			<h:panelGrid columns="1" width="100%"
+				rendered="#{simuladoDisciplinaBean.selecaoAtiva eq true}">
+
+				<!-- Corpo da lista -->
+				<h:form id="form">
+					<p:dataGrid var="questao"
+						value="#{simuladoDisciplinaBean.questoes}" layout="grid"
+						columns="1" rows="1" paginator="true" id="questao"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						rowsPerPageTemplate="1,5,10,20">
+
+						<f:facet name="header">
+					            Simulado
+					        </f:facet>
+
+						<p:panel style="text-align:center">
+							<h:panelGrid columns="1">
+
+								<p:spacer height="20" />
+
+								<p:outputLabel id="enunciado" value="#{questao.enunciado}" />
+
+								<p:spacer height="25" />
+
+								<p:outputLabel id="texto" value="#{questao.texto}" />
+
+								<p:spacer height="25" />
+
+								<p:outputLabel id="titulo" value="#{questao.titulo}" />
+
+								<p:spacer height="25" />
+
+								<!-- Alternativas -->
+								<p:selectOneRadio id="alt"
+									value="#{simuladoDisciplinaBean.alternativaSelecionada}"
+									layout="grid" columns="1">
+									<f:selectItems value="#{questao.opcoes}" var="qo"
+										itemLabel="#{qo.texto}" itemValue="#{qo.id}" />
+									<br />
+								</p:selectOneRadio>
+
+								<p:spacer height="35" />
+
+								<p:messages />
+								<p:messages id="messages" showDetail="true" autoUpdate="true" />
+
+								<p:commandButton value="Enviar"
+									actionListener="#{simuladoDisciplinaBean.enviarResposta}" />
+
+								<p:spacer height="20" />
+
+							</h:panelGrid>
+						</p:panel>
+
+					</p:dataGrid>
+
 				</h:form>
+				<!-- Corpo da lista -->
+			</h:panelGrid>
 
 
- 			</ui:define>
-			
-   		</ui:composition>
-    		
-        
-    </h:body>  
+
+		</ui:define>
+
+	</ui:composition>
+
+
+</h:body>
 </html>

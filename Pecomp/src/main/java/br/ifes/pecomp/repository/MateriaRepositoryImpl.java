@@ -31,6 +31,18 @@ public class MateriaRepositoryImpl extends AbstractRepository implements Seriali
 		return materia;
 	}
 	
+	public Materia getById(Long id){
+		TypedQuery<Materia> query = getSession().createQuery("select obj from TB_MATERIA obj where obj.id = :id", Materia.class);
+		query.setParameter("id", id);
+		Materia materia = null;
+		try{ 
+			materia = query.getSingleResult();
+		}
+		catch(Exception ex) { }
+		
+		return materia;
+	}
+	
 	public List<Materia> getAll() {
 		
  		TypedQuery<Materia> query = getSession().createQuery("select obj from TB_MATERIA obj", Materia.class);

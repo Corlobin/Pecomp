@@ -7,7 +7,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.TypedQuery;
 
-import br.ifes.pecomp.entity.Pessoa;
+import br.ifes.pecomp.entity.Materia;
 import br.ifes.pecomp.entity.Questao;
 
 public class QuestaoRepositoryImpl extends AbstractRepository implements Serializable {
@@ -45,5 +45,16 @@ public class QuestaoRepositoryImpl extends AbstractRepository implements Seriali
 		
 		return questoes;		
 	}
+	
+	public List<Questao> getByDisciplina(Materia materia){
+		
+		TypedQuery<Questao> query = getSession().createQuery("select obj from Questao obj where obj.materia = :materia", Questao.class);
+		query.setParameter("materia", materia);
+		List<Questao> questoes = query.getResultList();
+		
+		return questoes;		
+	}
+	
+	
 
 }

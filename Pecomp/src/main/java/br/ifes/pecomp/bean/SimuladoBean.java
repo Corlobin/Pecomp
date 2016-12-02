@@ -37,6 +37,8 @@ public class SimuladoBean extends AbstractBean implements Serializable  {
 	
 	private String pergunta;
 	
+	private boolean selecaoAtiva;
+	
 	@PostConstruct
     public void init() {
 		    	
@@ -145,5 +147,14 @@ public class SimuladoBean extends AbstractBean implements Serializable  {
 		this.anos = anos;
 	}
 
+
+	public boolean isSelecaoAtiva() {
+		return selecaoAtiva;
+	}
+
+
+	public void setSelecaoAtiva(boolean selecaoAtiva) {
+		this.selecaoAtiva = selecaoAtiva;
+	}
 	
 }

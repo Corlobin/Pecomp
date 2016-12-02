@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition template="templates/template_page.xhtml">
+		<ui:define name="titulo_menu"> 
+				Adicionar datas
+		</ui:define>
+
+		<ui:define name="content">
+
+			<h1 style="margin-top: 50;">Adicionar datas</h1>
+			<p:separator />
+			<p:spacer height="20" />
+
+			<p:panel id="panel" header="Detalhes datas" style="width:500px;margin-bottom:10px;">
+			<h:form id="formAdicionaData">
+
+					<p:messages id="messages" showDetail="true" autoUpdate="true" />
+
+					<h:panelGrid columns="3">
+					
+						<p:outputLabel for="dataProva" value="Data da Prova" />
+						<p:calendar id="dataProva" value="#{dataPoscompBean.poscomp.dataProva}" pattern="dd-MM-yyyy" mask="true" required="true"/>
+						<p:message for="dataProva" />
+						
+						<p:outputLabel for="dataInscricao" value="Data da Inscrição: " />
+						<p:calendar id="dataInscricao" value="#{dataPoscompBean.poscomp.dataInscricao}" pattern="dd-MM-yyyy" mask="true" required="true"/>
+						<p:message for="dataInscricao" />
+
+					</h:panelGrid>
+
+				<p:spacer height="20" />
+
+				<h:panelGrid columns="2">
+					<p:commandButton id="submitButton" value="Cadastrar datas" action="#{dataPoscompBean.salvarDatas}"
+						icon="ui-icon-check" />
+
+				</h:panelGrid>
+				<p:spacer height="25" />
+				
+
+			</h:form>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

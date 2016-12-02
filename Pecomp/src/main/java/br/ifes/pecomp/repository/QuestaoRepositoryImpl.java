@@ -36,5 +36,14 @@ public class QuestaoRepositoryImpl extends AbstractRepository implements Seriali
 		List<Integer> lista = this.getEntityManager().createQuery("select obj.ano from Questao obj group by obj.ano").getResultList();		
 		return lista;
 	}
+	
+	public List<Questao> getByAno(int ano){
+		
+		TypedQuery<Questao> query = getSession().createQuery("select obj from Questao obj where obj.ano = :ano", Questao.class);
+		query.setParameter("ano", ano);
+		List<Questao> questoes = query.getResultList();
+		
+		return questoes;		
+	}
 
 }

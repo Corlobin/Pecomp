@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity(name="TB_QST_OPCAO")
@@ -20,7 +20,8 @@ public class QuestaoOpcao extends AbstractEntity implements Serializable {
 	@Column(name="TB_QST_GABARITO")
 	private boolean gabarito;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	//@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = Questao.class)
 	private Questao questao;
 	
 	public QuestaoOpcao() {

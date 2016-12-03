@@ -26,6 +26,8 @@ public class CadastroBean extends AbstractBean implements Serializable {
 
 	private Pessoa pessoa;
 	
+	private String confirmaSenha;
+	
 	private Instituicao instituicao;
 	
 	private InstituicaoRepositoryImpl instituicoesRepository;
@@ -95,6 +97,14 @@ public class CadastroBean extends AbstractBean implements Serializable {
 		this.instituicao = instituicao;
 	}
 	
+	public String getConfirmaSenha() {
+		return confirmaSenha;
+	}
+
+	public void setConfirmaSenha(String confirmaSenha) {
+		this.confirmaSenha = confirmaSenha;
+	}
+
 	public List<Instituicao> getInstituicoes() {
 		return instituicoesRepository.getAll();
 	}
@@ -123,7 +133,7 @@ public class CadastroBean extends AbstractBean implements Serializable {
     {
     	boolean erro = true;
     	
-		if (!this.pessoa.getSenha().equalsIgnoreCase(this.pessoa.getConfirmaSenha())) {
+		if (!this.pessoa.getSenha().equalsIgnoreCase(confirmaSenha)) {
 			this.error("Senha confirmada incorretamente.");
 			erro = false;
 		}

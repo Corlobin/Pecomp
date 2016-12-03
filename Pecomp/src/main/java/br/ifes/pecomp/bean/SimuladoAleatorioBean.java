@@ -36,7 +36,7 @@ public class SimuladoAleatorioBean extends AbstractBean implements Serializable 
 	
 	private Integer quantidadeQuestoesAleatorias;
 	
-	private List<ArrayList<QuestaoOpcao>> alternativas; 
+	
 	
 	private Long alternativaSelecionada;
 	
@@ -55,19 +55,12 @@ public class SimuladoAleatorioBean extends AbstractBean implements Serializable 
 		questaoRepository = new QuestaoRepositoryImpl();
 		questaoOpcaoRepository = new QuestaoOpcaoRepositoryImpl();
 		pessoaAcertosRepository = new PessoaAcertosRepositoryImpl();
-    	alternativas = new ArrayList<ArrayList<QuestaoOpcao>>();
+    	
     	
 		questoes = questaoRepository.getAll();
     	
     }
 
-	public List<ArrayList<QuestaoOpcao>> getAlternativas() {
-		return alternativas;
-	}
-
-	public void setAlternativas(List<ArrayList<QuestaoOpcao>> alternativas) {
-		this.alternativas = alternativas;
-	}
 
 	public Long getAlternativaSelecionada() {
 		return alternativaSelecionada;
@@ -141,7 +134,6 @@ public class SimuladoAleatorioBean extends AbstractBean implements Serializable 
 		
 		for(Questao q: questoes){
 			ArrayList<QuestaoOpcao> l_questao_opcao = questaoOpcaoRepository.getByIdQuestao(q);
-			alternativas.add(l_questao_opcao);
 			q.setOpcoes(l_questao_opcao);
 		}
 		

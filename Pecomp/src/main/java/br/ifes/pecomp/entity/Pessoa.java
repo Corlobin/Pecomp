@@ -41,9 +41,6 @@ public class Pessoa extends AbstractEntity {
 	@Column(name="TB_PES_PROFISSAO")
 	private String profissao;
 	
-	@Column(name="TB_PES_CONF_SENHA")
-	private String confirmaSenha;
-	
 	@Column(name="TB_PES_IMG_NAME")
 	private String imageName;
 	
@@ -66,15 +63,6 @@ public class Pessoa extends AbstractEntity {
 		this.dataEntrou = dataEntrou;
 		this.curso = curso;
 		this.profissao = profissao;
-	}
-	
-
-	public String getConfirmaSenha() {
-		return confirmaSenha;
-	}
-
-	public void setConfirmaSenha(String confirmaSenha) {
-		this.confirmaSenha = confirmaSenha;
 	}
 
 	public String getNome() {

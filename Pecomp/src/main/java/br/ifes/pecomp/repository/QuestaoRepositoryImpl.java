@@ -55,6 +55,15 @@ public class QuestaoRepositoryImpl extends AbstractRepository implements Seriali
 		return questoes;		
 	}
 	
+	public List<Questao> getByQuantidade(int quantidade){
+		
+		//TODO: buscar de forma aleatoria
+		TypedQuery<Questao> query = getSession().createQuery("select obj from Questao obj", Questao.class);
+		List<Questao> questoes = query.setMaxResults(quantidade).getResultList();
+		
+		return questoes;		
+	}
+	
 	
 
 }

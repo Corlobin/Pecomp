@@ -17,8 +17,9 @@ import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
 import br.ifes.pecomp.entity.Instituicao;
-import br.ifes.pecomp.entity.PessoaAcertos;
+import br.ifes.pecomp.entity.Materia;
 import br.ifes.pecomp.repository.InstituicaoRepositoryImpl;
+import br.ifes.pecomp.repository.MateriaRepositoryImpl;
 import br.ifes.pecomp.repository.PessoaAcertosRepositoryImpl;
 
 
@@ -34,6 +35,10 @@ public class DesempenhoInstituicaoBean extends AbstractBean implements Serializa
 	
 	private PessoaAcertosRepositoryImpl pessoaAcertosRepository;
 	
+	private List<Materia> listMaterias;
+	
+	private MateriaRepositoryImpl materiaRepository;
+	
 	private Instituicao instituicao;
 	
 	private Long idInstituicaoSelecionada;
@@ -47,12 +52,17 @@ public class DesempenhoInstituicaoBean extends AbstractBean implements Serializa
     @PostConstruct
     public void init() {
     	pessoaAcertosRepository = new PessoaAcertosRepositoryImpl();
-        createAnimatedModels();
-        
-        instituicoesRepository = new InstituicaoRepositoryImpl();
+    	instituicoesRepository = new InstituicaoRepositoryImpl();
 		listInstituicao = instituicoesRepository.getAll();
+
+		createAnimatedModels();
+
 		instituicao = new Instituicao();
+		
+		materiaRepository = new MateriaRepositoryImpl();
+		listMaterias = materiaRepository.getAll();
     }
+    
     
     
     public Long getIdInstituicaoSelecionada() {
@@ -110,31 +120,23 @@ public class DesempenhoInstituicaoBean extends AbstractBean implements Serializa
         model.setLegendPosition("ne");
         Axis yAxis = model.getAxis(AxisType.Y);
         yAxis.setMin(0);
-        yAxis.setMax(20);
+        yAxis.setMax(5);
         
         ChartSeries acertos = new ChartSeries();
         acertos.setLabel("Acertos");
-       
-        //busca no banco acertos por instituicao
-        List<Object[]> acertosInstituicao = pessoaAcertosRepository.getAcertosInstituicaoGeral();
-    	
-		for (Object[] result : acertosInstituicao) {
-		    String nomeInstituicao = (String) result[0];
-		    int count = ((Number) result[1]).intValue();
-		    acertos.set(nomeInstituicao, count);
-		}
-		
-		ChartSeries erros = new ChartSeries();
+        
+        ChartSeries erros = new ChartSeries();
         erros.setLabel("Erros");
-		
-        //busca no banco erros por instituicao
-        List<Object[]> errosInstituicao = pessoaAcertosRepository.getErrosInstituicaoGeral();
-    	
-		for (Object[] result : errosInstituicao) {
-		    String nomeInstituicao = (String) result[0];
-		    int count = ((Number) result[1]).intValue();
-		    erros.set(nomeInstituicao, count);
-		}
+        
+        for (int i = 0; i < listInstituicao.size(); i++) {
+       
+        	Long acertosInstituicao = pessoaAcertosRepository.getAcertosInstituicaoGeral(listInstituicao.get(i).getId());
+        	acertos.set(listInstituicao.get(i).getNome(), acertosInstituicao);
+        	
+        	Long errosInstituicao = pessoaAcertosRepository.getErrosInstituicaoGeral(listInstituicao.get(i).getId());
+        	erros.set(listInstituicao.get(i).getNome(), errosInstituicao);
+        }
+    		
         
         model.addSeries(acertos);
         model.addSeries(erros);
@@ -159,32 +161,30 @@ public class DesempenhoInstituicaoBean extends AbstractBean implements Serializa
         Axis yAxis = model.getAxis(AxisType.Y);
         yAxis.setMin(0);
         yAxis.setMax(20);
-
         
         LineChartSeries acertos = new LineChartSeries();
-        acertos.setLabel("Acertos");
+        acertos.setLabel("Acertos");  
         
-        List<Object[]> acertosInstituicaoMat = pessoaAcertosRepository.getAcertosInstituicaoPorMateria(idInstituicaoSelecionada);
-    	
-  		for (Object[] result : acertosInstituicaoMat) {
-  		    String nomeInstituicao = (String) result[0];
-  		    int count = ((Number) result[1]).intValue();
-  		    acertos.set(nomeInstituicao, count);
-  		}
-  		
         LineChartSeries erros = new LineChartSeries();
         erros.setLabel("Erros");
         
-        List<Object[]> errosInstituicaoMat = pessoaAcertosRepository.getErrosInstituicaoPorMateria(idInstituicaoSelecionada);
-    	
-  		for (Object[] result : errosInstituicaoMat) {
-  		    String nomeInstituicao = (String) result[0];
-  		    int count = ((Number) result[1]).intValue();
-  		  erros.set(nomeInstituicao, count);
-  		}
- 
+        for (int i = 0; i < listMaterias.size(); i++) {
+        	Long count = pessoaAcertosRepository.getAcertosInstituicaoPorMateria(idInstituicaoSelecionada, listMaterias.get(i).getId());
+        	acertos.set(listMaterias.get(i).getDescricao(), count);  
+        	
+        	Long count2 = pessoaAcertosRepository.getErrosInstituicaoPorMateria(idInstituicaoSelecionada, listMaterias.get(i).getId());
+        	erros.set(listMaterias.get(i).getDescricao(), count2);
+        	
+        	//Apenas para verificar erro no resultado (apagar!!)
+        	String a = listMaterias.get(i).getDescricao();
+        	System.out.println("Acertos mat e count:  " + a + count);
+        	System.out.println("Erros mat e count:  " + a + count2);
+        }
+       
+       
         model.addSeries(acertos);
         model.addSeries(erros);
+        
         
         idInstituicaoSelecionada = null;
          

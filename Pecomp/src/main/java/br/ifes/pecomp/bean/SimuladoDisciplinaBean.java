@@ -173,8 +173,6 @@ public class SimuladoDisciplinaBean extends AbstractBean implements Serializable
 	
 	public void buscarQuestoesDisciplina(ActionEvent actionEvent){
 		
-		System.out.println("id materiaaaaaaaaaaaaaaaaaaaaaaa: " + idMateriaSelecionada );
-		
 		questoes = null;
 		
 		Materia mat = materiaRepository.getById(idMateriaSelecionada);

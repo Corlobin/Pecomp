@@ -18,21 +18,29 @@
 				<p:panel id="panel" header="Analisar desempenho por Instituição">
 				        <p:messages id="messages" />
 				        
+				        <h:form>
+					        <h:panelGrid columns="2" cellpadding="5">
+					            <h:outputLabel for="instituicao" value="Selecione uma Instituição para verificar seu desempenho:" />
+								<p:selectOneMenu id="instituicao" value="#{desempenhoInstituicaoBean.idInstituicaoSelecionada}" style="width:150px">
+					                <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true" />
+					                <f:selectItems value="#{desempenhoInstituicaoBean.listInstituicao}" var="i" itemLabel="#{i.nome}" itemValue="#{i.id}" />
+					            </p:selectOneMenu>
+					            <p:commandButton value="Analisar" id="nonAjax"
+							actionListener="#{desempenhoInstituicaoBean.buscarGraficoPorInstituicao}"
+							ajax="false" update="panel" />
+					        </h:panelGrid>
+				        </h:form>
 				        
-				        <h:panelGrid columns="2" cellpadding="5">
-				            <h:outputLabel for="instituicao" value="Selecione uma Instituição para verificar seu desempenho:" />
-							<p:selectOneMenu id="instituicao" value="#{cadastroBean.instituicao}" style="width:150px">
-				                <f:selectItem itemLabel="Selecione uma disciplina" itemValue="" noSelectionOption="true" />
-				                <f:selectItems value="#{cadastroBean.instituicoes}" />
-				            </p:selectOneMenu>
-				            <p:commandButton value="Analisar" update="panel"  />
-				        </h:panelGrid>
+				        <p:spacer height="25"/>
+				        
 			            <p:panel>
 				            <h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
 							    <p:chart type="bar" model="#{desempenhoInstituicaoBean.animatedModel1}" style="width:400px;" />
+							    <p:chart type="line" model="#{desempenhoInstituicaoBean.graficoInstituicao}" style="width:400px;" rendered="#{desempenhoInstituicaoBean.selecaoAtiva eq true}"/>
 							</h:panelGrid>
-				            
 			            </p:panel>
+			            
+			            
 			    </p:panel>
 				
  			</ui:define>

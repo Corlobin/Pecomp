@@ -35,6 +35,19 @@ public class InstituicaoRepositoryImpl extends AbstractRepository implements Ser
 		return i;
 	}
 	
+	public Instituicao getById(Long id)
+	{
+		TypedQuery<Instituicao> query = getSession().createQuery("select obj from Instituicao obj where obj.id = :id", Instituicao.class);
+		query.setParameter("id", id);
+		Instituicao i = null;
+		try{ 
+			i = query.getSingleResult();
+		}
+		catch(Exception ex) { }
+		
+		return i;
+	}
+	
 	public List<Instituicao> getAll() {
 		TypedQuery<Instituicao> query = getSession().createQuery("select obj from Instituicao obj", Instituicao.class);
 		List<Instituicao> instituicoes = query.getResultList();

@@ -36,8 +36,6 @@ public class SimuladoAleatorioBean extends AbstractBean implements Serializable 
 	
 	private Integer quantidadeQuestoesAleatorias;
 	
-	
-	
 	private Long alternativaSelecionada;
 	
 	private boolean selecaoAtiva;

@@ -72,6 +72,70 @@ public class PessoaAcertosRepositoryImpl extends AbstractRepository implements S
 
 		return resultado;
 	}
+	
+	public Long getAcertosMateriaGeral(Long idMateria) {
+
+		TypedQuery<Long> query = getSession()
+				.createQuery("select count(*) " 
+						+ "from  PessoaAcertos pa join pa.questao q "
+						+ "join q.materia m "
+						+ "where pa.acertou = true and m.id = :idMateria", Long.class);
+		query.setParameter("idMateria", idMateria);
+
+		Long resultado = query.getSingleResult();
+
+		return resultado;
+
+	}
+	
+	public Long getErrosMateriaGeral(Long idMateria) {
+
+		TypedQuery<Long> query = getSession()
+				.createQuery("select count(*) " 
+						+ "from  PessoaAcertos pa join pa.questao q "
+						+ "join q.materia m "
+						+ "where pa.acertou = false and m.id = :idMateria", Long.class);
+		query.setParameter("idMateria", idMateria);
+
+		Long resultado = query.getSingleResult();
+
+		return resultado;
+
+	}
+	
+	public Long getAcertosMateriaIndividual(Long idMateria, Long idPessoa) {
+
+		TypedQuery<Long> query = getSession()
+				.createQuery("select count(*) " 
+						+ "from  PessoaAcertos pa join pa.questao q "
+						+ "join q.materia m "
+						+ "join pa.pessoa p "
+						+ "where pa.acertou = true and m.id = :idMateria and p.id = :idPessoa", Long.class);
+		query.setParameter("idMateria", idMateria);
+		query.setParameter("idPessoa", idPessoa);
+
+		Long resultado = query.getSingleResult();
+
+		return resultado;
+
+	}
+	
+	public Long getErrosMateriaIndividual(Long idMateria, Long idPessoa) {
+
+		TypedQuery<Long> query = getSession()
+				.createQuery("select count(*) " 
+						+ "from  PessoaAcertos pa join pa.questao q "
+						+ "join q.materia m "
+						+ "join pa.pessoa p "
+						+ "where pa.acertou = false and m.id = :idMateria and p.id = :idPessoa", Long.class);
+		query.setParameter("idMateria", idMateria);
+		query.setParameter("idPessoa", idPessoa);
+
+		Long resultado = query.getSingleResult();
+
+		return resultado;
+
+	}
 
 	// Método utilizado anteriormente
 	public List<Object[]> getAcertosInstituicaoPorMateria2(Long id) {

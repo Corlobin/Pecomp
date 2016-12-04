@@ -18,7 +18,7 @@
 				<p:panel id="panel" header="Analisar desempenho por disciplina">
 				        <p:messages id="messages" />
 				        
-				        
+				        <!-- 
 				        <h:panelGrid columns="2" cellpadding="5">
 				            <h:outputLabel for="ano" value="Selecione uma disciplina para verificar seu desempenho:" />
 							<p:selectOneMenu id="ano" value="#{simuladoBean.materia}" style="width:150px">
@@ -27,10 +27,13 @@
 				            </p:selectOneMenu>
 				            <p:commandButton value="Analisar" update="panel"  />
 				        </h:panelGrid>
+				         -->
+				         <p:spacer height="50" />
+				         
 			            <p:panel>
 				            <h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
-							    <p:chart type="line" model="#{desempenhoEstudanteBean.animatedModel1}" style="width:400px;" />
-							    <p:chart type="bar" model="#{desempenhoEstudanteBean.animatedModel2}" style="width:400px;" />
+				            	<p:chart type="bar" model="#{desempenhoEstudanteBean.animatedModel2}" style="width:550px;" />
+							    <p:chart type="bar" model="#{desempenhoEstudanteBean.animatedModel3}" style="width:550px;" />
 							</h:panelGrid>
 				            
 			            </p:panel>

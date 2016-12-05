@@ -43,16 +43,18 @@
 
 				<!-- Corpo da lista -->
 				<h:form id="form">
+					<p:messages id="messages" showDetail="true" autoUpdate="true" />
+					
 					<p:dataGrid var="questao" value="#{simuladoAnoBean.questoes}"
 						layout="grid" columns="1" rows="1" paginator="true" id="questao"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-						rowsPerPageTemplate="1,5,10,20">
+						rowsPerPageTemplate="1">
 
 						<f:facet name="header">
 					            Simulado
 					        </f:facet>
 
-						<p:panel style="text-align:center">
+						<p:panel>
 							<h:panelGrid columns="1">
 							
 								<p:spacer height="20" />
@@ -77,16 +79,17 @@
 								</p:selectOneRadio>
 
 								<p:spacer height="35" />
-								
-								<p:messages/>
-								<p:messages id="messages" showDetail="true" autoUpdate="true" />
-								
-								<p:commandButton value="Enviar" actionListener="#{simuladoAnoBean.enviarResposta}" />
-								
+
+								<h:panelGrid columns="2">
+									<p:commandButton value="Enviar"
+										actionListener="#{simuladoAnoBean.enviarResposta}" />
+								</h:panelGrid>
+
 								<p:spacer height="20" />
 
 							</h:panelGrid>
 						</p:panel>
+						
 
 					</p:dataGrid>
 

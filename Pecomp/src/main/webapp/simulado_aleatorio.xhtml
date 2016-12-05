@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"  
-    xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui">  
- 
-    <h:body>  
- 
-		<ui:composition template="templates/template_page.xhtml">          
-			<ui:define name = "titulo_menu"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+	<ui:composition template="templates/template_page.xhtml">
+		<ui:define name="titulo_menu"> 
 				Página Inicial
 			</ui:define>
-	
-			<ui:define name="content">
-			
-				<!-- select para escolher quantidade de questoes -->
-				<h:form>
-				    <p:panel id="panel" header="Seleção da com questões aleatórias" style="width:400px;margin-bottom:10px;">
-				        <p:messages id="messages" />
-				        <h:panelGrid columns="2" cellpadding="5">
-				            <h:outputLabel for="quantidade" value="Selecione uma quantidade de questões:" />
-							<h:panelGrid columns="1" style="margin-bottom: 10px">
-						        <p:inputText id="txt1" value="#{simuladoAleatorioBean.quantidadeQuestoesAleatorias}" default="0" />
-						        <p:slider for="txt1" />
-						    </h:panelGrid>
-				    	<p:commandButton value="Selecionar" id="nonAjax"
+
+		<ui:define name="content">
+
+			<!-- select para escolher quantidade de questoes -->
+			<h:form>
+				<p:panel id="panel" header="Seleção da com questões aleatórias"
+					style="width:400px;margin-bottom:10px;">
+					<p:messages id="messages" />
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel for="quantidade"
+							value="Selecione uma quantidade de questões:" />
+						<h:panelGrid columns="1" style="margin-bottom: 10px">
+							<p:inputText id="txt1"
+								value="#{simuladoAleatorioBean.quantidadeQuestoesAleatorias}"
+								default="0" />
+							<p:slider for="txt1" />
+						</h:panelGrid>
+						<p:commandButton value="Selecionar" id="nonAjax"
 							actionListener="#{simuladoAleatorioBean.buscarQuestoesAleatorias}"
 							ajax="false" update="panel" />
-				        </h:panelGrid>
-				    </p:panel>
-				 
-				</h:form>
-				
-				
+					</h:panelGrid>
+				</p:panel>
+
+			</h:form>
+
+
 			<!-- questoes apresentadas de acordo com a qtd de questoes selecionadas -->
-			<h:panelGrid columns="1" width="100%" rendered="#{simuladoAleatorioBean.selecaoAtiva eq true}">
+			<h:panelGrid columns="1" width="100%"
+				rendered="#{simuladoAleatorioBean.selecaoAtiva eq true}">
 
 				<!-- Corpo da lista -->
 				<h:form id="form">
+					<p:messages id="messages" showDetail="true" autoUpdate="true" />
 					<p:dataGrid var="questao" value="#{simuladoAleatorioBean.questoes}"
 						layout="grid" columns="1" rows="1" paginator="true" id="questao"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -49,37 +55,39 @@
 					            Simulado
 					        </f:facet>
 
-						<p:panel style="text-align:center">
+						<p:panel>
 							<h:panelGrid columns="1">
-							
+
 								<p:spacer height="20" />
 
 								<p:outputLabel id="enunciado" value="#{questao.enunciado}" />
 
 								<p:spacer height="25" />
 
-								<p:outputLabel id="texto" value="#{questao.texto}"/>
+								<p:outputLabel id="texto" value="#{questao.texto}" />
 
 								<p:spacer height="25" />
 
-								<p:outputLabel id="titulo" value="#{questao.titulo}"/>
+								<p:outputLabel id="titulo" value="#{questao.titulo}" />
 
 								<p:spacer height="25" />
 
 								<!-- Alternativas -->
 								<p:selectOneRadio id="alt"
-									value="#{simuladoAleatorioBean.alternativaSelecionada}" layout="grid" columns="1">
-									<f:selectItems value="#{questao.opcoes}" var="qo" itemLabel="#{qo.texto}" itemValue="#{qo.id}" />
-									<br/>
+									value="#{simuladoAleatorioBean.alternativaSelecionada}"
+									layout="grid" columns="1">
+									<f:selectItems value="#{questao.opcoes}" var="qo"
+										itemLabel="#{qo.texto}" itemValue="#{qo.id}" />
+									<br />
 								</p:selectOneRadio>
 
 								<p:spacer height="35" />
-								
-								<p:messages/>
-								<p:messages id="messages" showDetail="true" autoUpdate="true" />
-								
-								<p:commandButton value="Enviar" actionListener="#{simuladoAleatorioBean.enviarResposta}" />
-								
+
+								<h:panelGrid columns="2">
+									<p:commandButton value="Enviar"
+										actionListener="#{simuladoAleatorioBean.enviarResposta}" />
+								</h:panelGrid>
+
 								<p:spacer height="20" />
 
 							</h:panelGrid>
@@ -90,13 +98,13 @@
 				</h:form>
 				<!-- Corpo da lista -->
 			</h:panelGrid>
-				
-				
-			
- 			</ui:define>
-			
-   		</ui:composition>
-    		
-        
-    </h:body>  
+
+
+
+		</ui:define>
+
+	</ui:composition>
+
+
+</h:body>
 </html>

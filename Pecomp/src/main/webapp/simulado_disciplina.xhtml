@@ -46,6 +46,8 @@
 
 				<!-- Corpo da lista -->
 				<h:form id="form">
+					<p:messages id="messages" showDetail="true" autoUpdate="true" />
+
 					<p:dataGrid var="questao"
 						value="#{simuladoDisciplinaBean.questoes}" layout="grid"
 						columns="1" rows="1" paginator="true" id="questao"
@@ -56,7 +58,7 @@
 					            Simulado
 					        </f:facet>
 
-						<p:panel style="text-align:center">
+						<p:panel>
 							<h:panelGrid columns="1">
 
 								<p:spacer height="20" />
@@ -84,11 +86,10 @@
 
 								<p:spacer height="35" />
 
-								<p:messages />
-								<p:messages id="messages" showDetail="true" autoUpdate="true" />
-
-								<p:commandButton value="Enviar"
-									actionListener="#{simuladoDisciplinaBean.enviarResposta}" />
+								<h:panelGrid columns="2">
+									<p:commandButton value="Enviar"
+										actionListener="#{simuladoDisciplinaBean.enviarResposta}" />
+								</h:panelGrid>
 
 								<p:spacer height="20" />
 

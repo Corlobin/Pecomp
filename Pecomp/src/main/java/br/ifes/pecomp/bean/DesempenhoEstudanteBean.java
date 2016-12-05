@@ -80,7 +80,7 @@ public class DesempenhoEstudanteBean extends AbstractBean implements Serializabl
         model.setLegendPosition("ne");
         Axis yAxis = model.getAxis(AxisType.Y);
         yAxis.setMin(0);
-        yAxis.setMax(7);
+        yAxis.setMax(20);
         
         ChartSeries acertos = new ChartSeries();
         acertos.setLabel("Acertos");
@@ -111,7 +111,7 @@ public class DesempenhoEstudanteBean extends AbstractBean implements Serializabl
         model.setLegendPosition("ne");
         Axis yAxis = model.getAxis(AxisType.Y);
         yAxis.setMin(0);
-        yAxis.setMax(7);
+        yAxis.setMax(20);
         
         Pessoa usuario = loginBean.getUsuario();
         
@@ -151,7 +151,7 @@ public class DesempenhoEstudanteBean extends AbstractBean implements Serializabl
         xAxis.setLabel("Quantidade");
         Axis yAxis = model.getAxis(AxisType.Y);
         yAxis.setMin(0);
-        yAxis.setMax(100);
+        yAxis.setMax(20);
 
         
         LineChartSeries series1 = new LineChartSeries();

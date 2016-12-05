@@ -115,14 +115,14 @@ public class SimuladoAleatorioBean extends AbstractBean implements Serializable 
 			pessoaAcertosRepository.inserir(correcao);		
 			
 			//validacoes nao estao aparecendo na tela
-			if(opcaoSel.getGabarito()){
-				this.sucess("Arrasou queridaaa!!");
+			if(opcaoSel.getGabarito() == true){
+				this.sucess("Resposta correta!");
 			}else{
-				this.error("Que burro! Dá zero p ele!!!");
+				this.error("Resposta errada!");
 			}
+		}else{
+			this.error("Selecione uma alternativa");
 		}
-		
-		this.error("Selecione uma alternativa");
 		
 	}
 	

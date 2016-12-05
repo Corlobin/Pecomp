@@ -47,18 +47,18 @@
 										<f:selectItems value="#{userWizard.listMaterias}" var="m"
 											itemLabel="#{m.descricao}" itemValue="#{m.descricao}" />
 									</p:selectOneMenu>
-
-									<h:outputText value="Título: " />
-									<p:inputTextarea value="#{userWizard.questao.titulo}" required="true"
-										label="Titulo" rows="6" cols="50" />
+									
+									<h:outputText value="Enunciado: " />
+									<p:inputTextarea value="#{userWizard.questao.enunciado}"
+										label="Enunciado" rows="6" cols="40" required="true" />
 
 									<h:outputText value="Texto: " />
 									<p:inputTextarea value="#{userWizard.questao.texto}"
 										label="Texto" rows="6" cols="40"/>
-
-									<h:outputText value="Enunciado: " />
-									<p:inputTextarea value="#{userWizard.questao.enunciado}"
-										label="Enunciado" rows="6" cols="40" />
+										
+										<h:outputText value="Título: " />
+									<p:inputTextarea value="#{userWizard.questao.titulo}"
+										label="Titulo" rows="6" cols="50" />
 
 								</h:panelGrid>
 							</p:panel>
@@ -98,18 +98,18 @@
 										<h:outputText value="#{userWizard.materia.descricao}"
 											styleClass="outputLabel" />
 
+										<h:outputText value="Enunciado: " />
+										<h:outputText value="#{userWizard.questao.enunciado}"
+											styleClass="outputLabel" />
+											
+											<h:outputText value="Texto " />
+										<h:outputText value="#{userWizard.questao.texto}"
+											styleClass="outputLabel" />
 
 										<h:outputText value="Título: " />
 										<h:outputText value="#{userWizard.questao.titulo}"
 											styleClass="outputLabel" />
 
-										<h:outputText value="Texto " />
-										<h:outputText value="#{userWizard.questao.texto}"
-											styleClass="outputLabel" />
-
-										<h:outputText value="Enunciado: " />
-										<h:outputText value="#{userWizard.questao.enunciado}"
-											styleClass="outputLabel" />
 									</h:panelGrid>
 
 									<h:panelGrid columns="3" columnClasses="label, value, value">

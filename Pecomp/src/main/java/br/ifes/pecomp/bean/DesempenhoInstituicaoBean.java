@@ -120,7 +120,7 @@ public class DesempenhoInstituicaoBean extends AbstractBean implements Serializa
         model.setLegendPosition("ne");
         Axis yAxis = model.getAxis(AxisType.Y);
         yAxis.setMin(0);
-        yAxis.setMax(5);
+        yAxis.setMax(20);
         
         ChartSeries acertos = new ChartSeries();
         acertos.setLabel("Acertos");

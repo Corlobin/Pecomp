@@ -201,13 +201,13 @@ public class SimuladoAnoBean extends AbstractBean implements Serializable  {
 			
 			//validacoes nao estao aparecendo na tela
 			if(opcaoSel.getGabarito()){
-				this.sucess("Arrasou queridaaa!!");
+				this.sucess("Resposta coreta!");
 			}else{
-				this.error("Que burro! Dá zero p ele!!!");
+				this.error("Resposta errada!");
 			}
+		}else{
+			this.error("Selecione uma alternativa");
 		}
-		
-		this.error("Selecione uma alternativa");
 		
 	}
 	

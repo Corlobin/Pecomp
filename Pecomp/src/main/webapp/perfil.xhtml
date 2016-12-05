@@ -26,7 +26,7 @@
 
 						<f:facet name="header">
 							<!-- TODO colocar imagem de forma dinamica -->
-							<img src="images/#{perfilBean.userImage}" />
+							<h:graphicImage library="TemaPadrao" name = "images/#{perfilBean.userImage}"/>
 						</f:facet>
 
 						<p:commandButton id="modalDialogButton" value="Tirar foto" onclick="PF('dlg2').show();" type="button"/>  

@@ -171,11 +171,12 @@ public class PerfilBean extends AbstractBean implements Serializable {
 	}
 
 	public String getUserImage() {
+		
 		String imagem = this.loginBean.getUsuario().getImageName();
 		if (imagem == null) {
-			return "aluno5.png";
+			return "resources/TemaPadrao/images/aluno5.png";
 		} else {
-			return imagem;
+			return "images/" + imagem + ".jpeg";
 		}
 
 	}

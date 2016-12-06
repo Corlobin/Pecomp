@@ -11,14 +11,13 @@
 		<ui:composition>
 		
 			<p:layoutUnit id="header-padrao" position="north" size="100" >
-			<h:panelGrid columns="2" width="100%">
-			 	<h:graphicImage library="TemaPadrao" name = "images/logo.png" id="logo-header"/>
-			 	<h:graphicImage library="TemaPadrao" name = "images/#{perfilBean.userImage}" id="img-usuario" style="text-align:right"/>
-		 	</h:panelGrid>
-			 	
+		 		<h:graphicImage library="TemaPadrao" name = "images/logo.png" id="logo-header"/>
 				<h:graphicImage library="TemaPadrao" name = "images/faixa.png" id="faixa-header"/>
-				
 			</p:layoutUnit>
+			
+			<p:panel style="text-align:justify">
+			 	<img src="#{perfilBean.userImage}"  id="img-usuario" style="text-align:right"/>
+		 	</p:panel>
 	
 		</ui:composition>
 	</h:body>
